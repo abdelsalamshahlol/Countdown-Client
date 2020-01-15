@@ -8,6 +8,7 @@ import {AppComponent} from './app.component';
 import {IndexComponent} from './pages/index/index.component';
 import {ProductComponent} from './pages/product/product.component';
 import { NavbarComponent } from './components/UI/navbar/navbar.component';
+import { FooterComponent } from './components/UI/footer/footer.component';
 
 // Routes array
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
     IndexComponent,
     ProductComponent,
     NavbarComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
