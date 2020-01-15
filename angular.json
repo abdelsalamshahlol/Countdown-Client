@@ -24,7 +24,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss",
+              "src/assets/css/now-ui-kit.min.css"
             ],
             "scripts": []
           },
@@ -120,6 +121,12 @@
           }
         }
       }
-    }},
-  "defaultProject": "countdown-app"
+    }
+  },
+  "defaultProject": "countdown-app",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
