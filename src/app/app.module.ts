@@ -7,9 +7,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppComponent} from './app.component';
 import {IndexComponent} from './pages/index/index.component';
 import {ProductComponent} from './pages/product/product.component';
-import { NavbarComponent } from './components/UI/navbar/navbar.component';
-import { FooterComponent } from './components/UI/footer/footer.component';
-import { SignupComponent } from './pages/signup/signup.component';
+import {NavbarComponent} from './components/UI/navbar/navbar.component';
+import {FooterComponent} from './components/UI/footer/footer.component';
 
 // Routes array
 const routes: Routes = [
@@ -17,6 +16,10 @@ const routes: Routes = [
   {path: 'product', component: ProductComponent},
   {path: 'signup', component: SignupComponent}
 ];
+
+// Testing jQuery
+declare var $: any;
+console.log(`jQuery version: ${$.fn.jquery}`);
 
 @NgModule({
   declarations: [
