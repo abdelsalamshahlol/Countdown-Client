@@ -1,0 +1,60 @@
+
+<div class="content">
+    <div class="container">
+        <div class="col-md-4 ml-auto mr-auto">
+            <div class="card card-login card-plain">
+                <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <div class="card-header text-center">
+                        <div class="logo-container">
+                            <img src="../assets/img/now-logo.png" alt="">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="input-group no-border input-lg">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
+                        </div>
+                        <input 
+                        type="text" 
+                        class="form-control" 
+                        placeholder="Email..." 
+                        formControlName="email"
+                        [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                        />
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                          <div *ngIf="f.email.errors.required">Email is required</div>
+                          <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                        </div>
+                      </div>
+                      <div class="input-group no-border input-lg">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="now-ui-icons text_caps-small"></i></span>
+                        </div>
+                        <input 
+                        type="text" 
+                        class="form-control" 
+                        placeholder="Password..." 
+                        formControlName="password"
+                        [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                        />
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                          <div *ngIf="f.password.errors.required">Password is required</div>
+                          <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="card-footer text-center mt-1">
+                        <button class="btn btn-primary btn-round btn-lg btn-block">Login</button>
+                    </div>
+                    <div class="pull-left mt-3">
+                        <h6><a href="/signup" class="link footer-link">Create Account</a></h6>
+                    </div>
+
+                    <div class="pull-right mt-3">
+                        <h6><a href="#pablo" class="link footer-link">Need Help?</a></h6>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
