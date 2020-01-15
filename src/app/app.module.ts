@@ -34,7 +34,8 @@ console.log(`jQuery version: ${$.fn.jquery}`);
     RouterModule.forRoot(routes)
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [RouterModule]
 })
 export class AppModule {
 }
