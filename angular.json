@@ -25,7 +25,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/assets/now-ui-kit.min.css"
+              "src/assets/css/now-ui-kit.min.css"
             ],
             "scripts": []
           },
