@@ -1,25 +1,87 @@
 <app-navbar></app-navbar>
 <!--Note that the wrapper is mandatory by the UI kit to render properly-->
 <div class="wrapper">
-  <div class="page-header clear-filter" filter-color="orange">
-    <div class="rellax-header rellax-header-sky" data-rellax-speed="-4">
-      <div class="page-header-image" style="background-image: url('assets/img/presentation-page/nuk-pro-back-sky.jpg')">
+  <div class="header-1">
+    <nav class="navbar navbar-expand-lg navbar-transparent bg-primary navbar-absolute">
+      <div class="container">
+        <div class="navbar-translate">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar bar1"></span>
+            <span class="navbar-toggler-bar bar2"></span>
+            <span class="navbar-toggler-bar bar3"></span>
+          </button>
+          <a class="navbar-brand" href="#pablo">Creative Tim</a>
+        </div>
+
+        <div class="collapse navbar-collapse show" data-nav-image="./assets/img//blurred-image-1.jpg">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#pablo">
+                Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#pablo">
+                About Us
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#pablo">
+                Contact Us
+              </a>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="https://twitter.com/CreativeTim">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.facebook.com/CreativeTim">
+                <i class="fab fa-facebook-square"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.instagram.com/CreativeTimOfficial">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="page-header header-filter">
+<!--      <div class="page-header-image" [ngStyle]="{'background':'url(assets/img/bg16.jpg)'}"></div>-->
+      <div class="page-header-image" style="background-image: url('../../../assets/img/bg16.jpg');"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7 ml-auto text-right">
+            <h1 class="title">History of surfing</h1>
+            <h4 class="description">The riding of waves has likely existed since humans began swimming in the ocean. In this sense, bodysurfing is the oldest type of wave-catching. Standing up on what is now called a surfboard is a relatively recent innovation developed by the Polynesians.</h4>
+            <br>
+
+            <div class="buttons">
+              <a href="#pablo" class="btn btn-icon btn-link btn-neutral btn-lg">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#pablo" class="btn btn-icon btn-link btn-neutral btn-lg">
+                <i class="fab fa-facebook-square"></i>
+              </a>
+              <a href="#pablo" class="btn btn-icon btn-link btn-neutral btn-lg">
+                <i class="fab fa-get-pocket"></i>
+              </a>
+              <a href="#pablo" class="btn btn-info btn-lg mr-3">
+                Read More
+              </a>
+            </div>
+
+          </div>
+        </div>
       </div>
     </div>
-
-    <div class="rellax-header rellax-header-buildings" data-rellax-speed="0">
-      <div class="page-header-image page-header-city" style="background-image: url('assets/img/presentation-page/nuk-pro-buildings.png')">
-      </div>
-    </div>
-
-    <div class="rellax-text-container">
-      <h1 class="h1-seo rellax-text" data-rellax-speed="-1">Components</h1>
-    </div>
-
-    <h3 class="h3-description rellax-text" data-rellax-speed="-1">A beautiful premium Bootstrap 4 UI Kit.</h3>
-
-    <h6 class="category category-absolute rellax-text" data-rellax-speed="-1">Designed by <a href="http://invisionapp.com/" target="_blank"><img src="assets/img/invision-white-slim.png" class="invision-logo"></a>. Coded by <a href="https://www.creative-tim.com/" target="_blank"><img src="assets/img/creative-tim-white-slim2.png" class="creative-tim-logo"></a>.</h6>
-
   </div>
 </div>
 <app-footer></app-footer>
