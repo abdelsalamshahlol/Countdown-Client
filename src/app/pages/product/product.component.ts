@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-product',
@@ -51,9 +51,12 @@ export class ProductComponent implements OnInit {
       last_auction_price: 800,
       value: 620,
       end_date: "23:00:00"
+
     }
-  ]
-  constructor() { }
+  ];
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
