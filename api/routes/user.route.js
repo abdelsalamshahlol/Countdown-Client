@@ -7,8 +7,8 @@ const jwt = require('jsonwebtoken')
 let User = require('../db/models/userModel')
 
 userRoutes.route('/signup').post( (req, res) => {
-  let {name, email, password} = req.body
-  User.find({email})
+  let {firstName, email, password} = req.body
+  User.find({ email })
   .then(result => {
     if (result.length !== 0) {
       res.status(301).json({registered: false, msg: 'user already exist'});
@@ -16,9 +16,8 @@ userRoutes.route('/signup').post( (req, res) => {
       var token;
       //hash the password and saved it
       bcrypt.hash(password, 10, (err, hashedPassword) => {
-        if (err) reject(err)
         const newUser = new User({
-          name,
+          firstName,
           email,
           hashedPassword
         });
@@ -28,12 +27,15 @@ userRoutes.route('/signup').post( (req, res) => {
         newUser.save()
         .then(registeredUser => {
           token = jwt.sign(
-            { _id: registeredUser.id },// id of new user created
+            { _id: registeredUser.id }, // id of new user created
             process.env.TOKEN_SECRET,
             { expiresIn: 3600 }
           )
           res.header('auth-token', token) //saving the token in the header !!
           res.status(200).json({ registered: true, msg: "user registered!", token, userId: registeredUser._id})
+        })
+        .catch(err => {
+          res.json({ registered: false, msg: "invalid email!" })
         })
       })
     }
