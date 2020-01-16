@@ -1,8 +1,8 @@
-
-<nav class="navbar navbar-expand-lg navbar-transparent bg-primary navbar-absolute">
+<nav class="navbar navbar-expand-lg fixed-top navbar-transparent bg-primary" color-on-scroll="500">
   <div class="container">
     <div class="navbar-translate">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navbarSupportedContent"
+              aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-bar bar1"></span>
         <span class="navbar-toggler-bar bar2"></span>
         <span class="navbar-toggler-bar bar3"></span>
@@ -12,17 +12,17 @@
 
     <div class="collapse navbar-collapse show" data-nav-image="./assets/img//blurred-image-1.jpg">
       <ul class="navbar-nav mx-auto">
-        <li class="nav-item active">
+        <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
           <a class="nav-link" routerLink="/">
             Home
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
           <a class="nav-link" routerLink="/products">
-           Product (testing)
+            Products
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" [routerLinkActive]="['active']">
           <a class="nav-link" href="#pablo">
             Contact Us
           </a>
@@ -47,5 +47,6 @@
         </li>
       </ul>
     </div>
+    <pre> ACTIVE {{routerLinkActive}}</pre>
   </div>
 </nav>
