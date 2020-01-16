@@ -78,6 +78,7 @@
         </div>
       </div>
     </div>
+    <!--    Content Area-->
     <div class="content">
       <app-stats [products]="8590" [productsSold]="2" [productsBought]="0" [auctionsEntered]="0"></app-stats>
       <div class="row">
@@ -88,7 +89,11 @@
             quisquam temporibus veritatis vitae.</p>
         </div>
       </div>
+      <div class="row">
+        <router-outlet></router-outlet>
+      </div>
     </div>
+    <!--    End Content Area-->
     <footer class="footer">
       <div class=" container-fluid ">
         <nav>
