@@ -1,8 +1,9 @@
+<app-navbar></app-navbar>
 <!-- map -->
 <div class="mapouter">
   <div class="gmap_canvas"><iframe height="200px" width="100%" id="gmap_canvas"
-      src="https://maps.google.com/maps?q=El%20Ghazala%2C%20Tunisia&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
-      scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.emojilib.com"></a></div>
+                                   src="https://maps.google.com/maps?q=El%20Ghazala%2C%20Tunisia&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
+                                   scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.emojilib.com"></a></div>
   <style>
     .mapouter {
       position: relative;
@@ -36,7 +37,7 @@
               <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
             </div>
             <input type="text" name="name" class="form-control" placeholder="Name" [(ngModel)]="name"
-              #nameInput="ngModel" required>
+                   #nameInput="ngModel" required>
           </div>
           <div class="help is-error" *ngIf="nameInput.invalid && nameInput.touched">
             Your name is required.
@@ -48,7 +49,7 @@
               <span class="input-group-text"><i class="now-ui-icons ui-1_email-85"></i></span>
             </div>
             <input type="email" name="email" class="form-control" placeholder="Email" [(ngModel)]="email"
-              #emailInput="ngModel" required>
+                   #emailInput="ngModel" required>
           </div>
           <div class="help is-error" *ngIf="emailInput.invalid && emailInput.touched">
             Your email is required and need to be a valid email.
@@ -57,7 +58,7 @@
           <div class="form-group">
             <label>Your message</label>
             <textarea type="text" name="message" class="form-control" placeholder="Message" [(ngModel)]="message"
-              #messageInput="ngModel" required>
+                      #messageInput="ngModel" required>
           </textarea>
           </div>
           <div class="help is-error" *ngIf="messageInput.invalid && messageInput.touched">
@@ -110,3 +111,4 @@
     </div>
   </div>
 </div>
+<app-footer></app-footer>
