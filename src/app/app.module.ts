@@ -34,11 +34,11 @@ const routes: Routes = [
     children: [
       {path: '', component: HomeComponent},
       {path: 'product', component: ProductUserComponent}
+      
     ]
   },
   {path: 'signup', component: SignupComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'add', component: AddProductComponent},
   {path: 'contact', component: ContactComponent }
 
 ];
