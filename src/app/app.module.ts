@@ -34,10 +34,7 @@ console.log(`jQuery version: ${$.fn.jquery}`);
     NavbarComponent,
     FooterComponent,
     SignupComponent,
-<<<<<<< HEAD
-=======
     LoginComponent
->>>>>>> 0b95c68b3cb221794830459cd46a4abe72944f31
   ],
   imports: [
     BrowserModule,
