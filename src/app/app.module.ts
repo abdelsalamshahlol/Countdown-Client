@@ -13,6 +13,7 @@ import {DashboardComponent} from './pages/admin/dashboard/dashboard.component';
 import {StatsComponent} from './components/admin-UI/stats/stats.component';
 import {SidebarComponent} from './components/admin-UI/sidebar/sidebar.component';
 import {HomeComponent} from './pages/admin/home/home.component';
+import {ProductUserComponent} from './pages/admin/product-user/product-user.component';
 
 // Routes array
 const routes: Routes = [
@@ -21,7 +22,8 @@ const routes: Routes = [
   {
     path: 'account', component: DashboardComponent,
     children: [
-      {path: '', component: HomeComponent}
+      {path: '', component: HomeComponent},
+      {path: 'product', component: ProductUserComponent}
     ]
   }
 ];
@@ -41,6 +43,7 @@ console.log(`jQuery version: ${$.fn.jquery}`);
     StatsComponent,
     SidebarComponent,
     HomeComponent,
+    ProductUserComponent,
   ],
   imports: [
     BrowserModule,
