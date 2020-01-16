@@ -67,7 +67,7 @@ userRoutes.route('/delete/:id').get(function (req, res) {
 userRoutes.route('/login').post( (req, res) => {
   const { email, password } = req.body
 
-  User.findOne({email})
+  User.findOne({ email })
   .then(user => {
     if (user.length === 0) {
       res.status(301).json({authed: false, msg: 'user doesnt exist'});
