@@ -1,0 +1,123 @@
+<div class="wrapper container mt-5">
+    <div class="row">
+        <div class="col-md-5">
+
+            <div id="productCarousel" class="carousel slide" data-ride="carousel" data-interval="8000">
+                <ol class="carousel-indicators">
+                    <li data-target="#productCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#productCarousel" data-slide-to="1" class=""></li>
+                    <li data-target="#productCarousel" data-slide-to="2" class=""></li>
+                    <li data-target="#productCarousel" data-slide-to="3" class=""></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active">
+                        <img class="d-block img-raised" src={{product.image}} alt="First slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block img-raised" src={{product.image}} alt="Second slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block img-raised" src={{product.image}} alt="Third slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block img-raised" src={{product.image}} alt="Third slide">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#productCarousel" role="button" data-slide="prev">
+                    <button type="button" class="btn btn-primary btn-icon btn-round btn-sm" name="button">
+                        <i class="now-ui-icons arrows-1_minimal-left"></i>
+                    </button>
+                </a>
+                <a class="carousel-control-next" href="#productCarousel" role="button" data-slide="next">
+                    <button type="button" class="btn btn-primary btn-icon btn-round btn-sm" name="button">
+                        <i class="now-ui-icons arrows-1_minimal-right"></i>
+                    </button>
+                </a>
+            </div>
+
+            <p class="blockquote blockquote-primary">
+                "{{product.description}}"<br><br>
+                <small>Owner of the product here</small>
+            </p>
+
+        </div>
+        <div class="col-md-6 ml-auto mr-auto">
+            <h2 class="title"> {{product.name}} </h2>
+            <h5 class="category">{{product.category}}</h5>
+            <h2 class="main-price">Value: {{product.value}} TND</h2>
+
+            <div id="accordion" role="tablist" aria-multiselectable="true" class="card-collapse">
+            <div class="card card-plain">
+                <div class="card-header" role="tab" id="headingOne">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="">
+                        Description
+                        <i class="now-ui-icons arrows-1_minimal-down"></i>
+                    </a>
+                </div>
+
+                <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
+                <div class="card-body">
+                    <p>Eres' daring 'Grigri Fortune' swimsuit has the fit and coverage of a bikini in a one-piece silhouette. This fuchsia style is crafted from the label's sculpting peau douce fabric and has flattering cutouts through the torso and back. Wear yours with mirrored sunglasses on vacation.</p>
+                </div>
+                </div>
+            </div>
+            <div class="card card-plain">
+                <div class="card-header" role="tab" id="headingTwo">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Designer Information
+
+                        <i class="now-ui-icons arrows-1_minimal-down"></i>
+                    </a>
+                </div>
+                <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" style="">
+                <div class="card-body">
+                    <p>An infusion of West Coast cool and New York attitude, Rebecca Minkoff is synonymous with It girl style. Minkoff burst on the fashion scene with her best-selling 'Morning After Bag' and later expanded her offering with the Rebecca Minkoff Collection - a range of luxe city staples with a "downtown romantic" theme.</p>
+                </div>
+                </div>
+            </div>
+            <div class="card card-plain">
+                <div class="card-header" role="tab" id="headingThree">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Details and Care
+
+                        <i class="now-ui-icons arrows-1_minimal-down"></i>
+                    </a>
+                </div>
+                <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" style="">
+                <div class="card-body">
+                    <ul>
+                        <li>Storm and midnight-blue stretch cotton-blend</li>
+                        <li>Notch lapels, functioning buttoned cuffs, two front flap pockets, single vent, internal pocket</li>
+                        <li>Two button fastening</li>
+                        <li>84% cotton, 14% nylon, 2% elastane</li>
+                        <li>Dry clean</li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row pick-size">
+                <div class="col-lg-6 col-md-8 col-sm-6">
+                    <label>Select color</label>
+                    <div class="dropdown bootstrap-select"><select class="selectpicker" data-style="select-with-transition btn btn-block" data-size="7" tabindex="-98">
+                        <option value="1">Black</option>
+                        <option value="2">Gray</option>
+                        <option value="3">White</option>
+                    </select><button type="button" class="dropdown-toggle select-with-transition btn btn-block" data-toggle="dropdown" role="button" title="Black"><div class="filter-option"><div class="filter-option-inner"><div class="filter-option-inner-inner">Black</div></div> </div></button><div class="dropdown-menu " role="combobox"><div class="inner show" role="listbox" aria-expanded="false" tabindex="-1"><ul class="dropdown-menu inner show"></ul></div></div></div>
+                </div>
+                <div class="col-lg-6 col-md-8 col-sm-6">
+                    <label>Select size</label>
+                    <div class="dropdown bootstrap-select"><select class="selectpicker" data-style="select-with-transition btn btn-block" data-size="7" tabindex="-98">
+                        <option value="1">Small </option>
+                        <option value="2">Medium</option>
+                        <option value="3">Large</option>
+                    </select><button type="button" class="dropdown-toggle select-with-transition btn btn-block" data-toggle="dropdown" role="button" title="Small"><div class="filter-option"><div class="filter-option-inner"><div class="filter-option-inner-inner">Small</div></div> </div></button><div class="dropdown-menu " role="combobox"><div class="inner show" role="listbox" aria-expanded="false" tabindex="-1"><ul class="dropdown-menu inner show"></ul></div></div></div>
+                </div>
+            </div>
+            <div class="row justify-content-end">
+                <button class="btn btn-primary mr-3 mt-4">Add to Cart &nbsp;<i class="now-ui-icons shopping_cart-simple"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
