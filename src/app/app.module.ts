@@ -11,13 +11,25 @@ import {IndexComponent} from './pages/index/index.component';
 import {ProductComponent} from './pages/product/product.component';
 import {NavbarComponent} from './components/UI/navbar/navbar.component';
 import {FooterComponent} from './components/UI/footer/footer.component';
+import {DashboardComponent} from './pages/admin/dashboard/dashboard.component';
+import {StatsComponent} from './components/admin-UI/stats/stats.component';
+import {SidebarComponent} from './components/admin-UI/sidebar/sidebar.component';
+import {HomeComponent} from './pages/admin/home/home.component';
+import {ProductUserComponent} from './pages/admin/product-user/product-user.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
 
 // Routes array
 const routes: Routes = [
   {path: '', component: IndexComponent},
-  {path: 'product', component: ProductComponent},
+  {path: 'products', component: ProductComponent},
+  {
+    path: 'account', component: DashboardComponent,
+    children: [
+      {path: '', component: HomeComponent},
+      {path: 'product', component: ProductUserComponent}
+    ]
+  },
   {path: 'signup', component: SignupComponent},
   {path: 'login', component: LoginComponent}
 ];
@@ -33,6 +45,11 @@ console.log(`jQuery version: ${$.fn.jquery}`);
     ProductComponent,
     NavbarComponent,
     FooterComponent,
+    DashboardComponent,
+    StatsComponent,
+    SidebarComponent,
+    HomeComponent,
+    ProductUserComponent,
     SignupComponent,
     LoginComponent
   ],
@@ -44,7 +61,8 @@ console.log(`jQuery version: ${$.fn.jquery}`);
     RouterModule.forRoot(routes)
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [RouterModule]
 })
 export class AppModule {
 }
