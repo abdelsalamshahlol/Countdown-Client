@@ -7,35 +7,51 @@ import {Component, OnInit} from '@angular/core';
 })
 export class ProductComponent implements OnInit {
   products = [
-    {
-      title: 'Product title',
+    { id: "1",
+      name: "Product 1",
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-      time: '23:00:00',
-      price: 620
+      image: 'https://source.unsplash.com/1600x900/?product',
+      category: "Sport",
+      last_auction_price: 800,
+      value: 620,
+      end_date: "23:00:00"
     },
-    {
-      title: 'Product title',
+    { id: 2,
+      name: "Product 2",
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-      time: '23:00:00',
-      price: 620
+      image: 'https://source.unsplash.com/1600x900/?product',
+      category: "Sport",
+      last_auction_price: 800,
+      value: 620,
+      end_date: "23:00:00"
     },
-    {
-      title: 'Product title',
+    { id: 3,
+      name: "Product 3",
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-      time: '23:00:00',
-      price: 620
+      image: 'https://source.unsplash.com/1600x900/?product',
+      category: "Sport",
+      last_auction_price: 800,
+      value: 620,
+      end_date: "23:00:00"
     },
-    {
-      title: 'Product title',
+    { id: 5,
+      name: "Product 4",
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-      time: '23:00:00',
-      price: 620
+      image: 'https://source.unsplash.com/1600x900/?product',
+      category: "Sport",
+      last_auction_price: 800,
+      value: 620,
+      end_date: "23:00:00"
     },
-    {
-      title: 'Product title',
+    { id: 6,
+      name: "Product 5",
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-      time: '23:00:00',
-      price: 620
+      image: 'https://source.unsplash.com/1600x900/?product',
+      category: "Sport",
+      last_auction_price: 800,
+      value: 620,
+      end_date: "23:00:00"
+
     }
   ];
 

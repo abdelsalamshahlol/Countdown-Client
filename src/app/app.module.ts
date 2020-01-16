@@ -24,7 +24,9 @@ import {HomeComponent} from './pages/admin/home/home.component';
 import {ProductUserComponent} from './pages/admin/product-user/product-user.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
+import { ProductDetailsComponent } from './pages/productDetails/productDetails.component';
 import { ContactComponent } from './pages/contact/contact.component';
+
 
 // Routes array
 const routes: Routes = [
@@ -40,7 +42,9 @@ const routes: Routes = [
   },
   {path: 'signup', component: SignupComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'product/:id', component: ProductDetailsComponent},
   {path: 'contact', component: ContactComponent }
+
 
 ];
 
@@ -62,6 +66,7 @@ console.log(`jQuery version: ${$.fn.jquery}`);
     ProductUserComponent,
     SignupComponent,
     LoginComponent,
+    ProductDetailsComponent
     ContactComponent
   ],
   imports: [
