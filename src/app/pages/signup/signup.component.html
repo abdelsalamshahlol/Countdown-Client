@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div class="wrapper">
     <div class="content">
         <div class="container">
@@ -44,10 +45,14 @@
                             <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form">
 
                                 <div class="input-group">
-                                    <div class="input-group-prepend"><span class="input-group-text"><i
-                                                class="now-ui-icons users_circle-08"></i></span></div>
-                                    <input formControlName="firstName" class="form-control" placeholder="First Name..."
-                                        type="text" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+                                    <div class="input-group-prepend"><span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span></div>
+                                    <input 
+                                    formControlName="firstName" 
+                                    class="form-control" 
+                                    placeholder="First Name..." 
+                                    type="text" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" 
+                                    >
                                     <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
                                         <div *ngIf="f.firstName.errors.required">First Name is required</div>
                                     </div>
