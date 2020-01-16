@@ -11,6 +11,7 @@ import {NavbarComponent} from './components/UI/navbar/navbar.component';
 import {FooterComponent} from './components/UI/footer/footer.component';
 import {DashboardComponent} from './pages/admin/dashboard/dashboard.component';
 import { StatsComponent } from './components/admin-UI/stats/stats.component';
+import { SidebarComponent } from './components/admin-UI/sidebar/sidebar.component';
 
 // Routes array
 const routes: Routes = [
@@ -32,6 +33,7 @@ console.log(`jQuery version: ${$.fn.jquery}`);
     FooterComponent,
     DashboardComponent,
     StatsComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
