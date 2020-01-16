@@ -1,0 +1,25 @@
+<div class="row" style='padding: 0px 20px'>
+  <div class="col-md-4" *ngFor="let product of products">
+    <div class="card main-card" style="width: 450px;">
+      <div class="card card-background" style="background-size: cover; background-image: url('https://source.unsplash.com/1600x900/?product')">
+        <div class="myfooter">
+          <div class="card-footer text-left">
+            <div class="stats">
+              <h4>{{product.price}} TND</h4>
+              <span>{{product.time}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">{{product.title}}</h4>
+        <p class="card-text">{{product.description}}</p>
+        <hr>
+        <div class="buttons-div">
+          <a href="#" class="btn btn-primary" style="float: left">View Details</a>
+          <a href="#" class="btn btn-danger" style="float: right">Watch</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

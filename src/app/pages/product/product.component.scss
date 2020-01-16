@@ -1,0 +1,46 @@
+.myfooter {
+  height: 300px;
+  display: flex;
+  flex-direction: column-reverse;
+  background-image: linear-gradient(to bottom, rgba(0,255,255,0) 30%, rgba(0,0,0,1));
+  margin: -2px;
+  border-right: 1px solid rgba(0, 0, 0, 0.125);
+  border-left: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.stats {
+  display: flex !important;
+  flex-direction: row;
+  place-content: space-between;
+  padding: 0px 20px;
+  align-items: baseline;
+}
+
+.card-footer {
+  border-top: none;
+  background-color: inherit !important;
+}
+
+.buttons-div {
+  display: flex;
+  place-content: space-evenly;
+}
+
+.main-card {
+  margin: 20px auto;
+}
+
+span {
+  font-size: 1.5rem;
+}
+
+.card-background:after {
+  background-color: transparent !important;
+}
+
+.myStats {
+  display: flex;
+  flex-direction: row;
+  place-content: space-between;
+  color: white;
+}
