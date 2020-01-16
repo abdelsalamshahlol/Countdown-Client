@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-=======
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { MustMatch } from '../../helpers/must-match.validator';
->>>>>>> 0b95c68b3cb221794830459cd46a4abe72944f31
 
 @Component({
   selector: 'app-signup',
@@ -13,13 +10,6 @@ import { MustMatch } from '../../helpers/must-match.validator';
 })
 export class SignupComponent implements OnInit {
 
-<<<<<<< HEAD
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-=======
   registerForm: FormGroup;
   submitted: boolean = false;
   userData: any = [];
@@ -60,5 +50,4 @@ export class SignupComponent implements OnInit {
 
 
 
->>>>>>> 0b95c68b3cb221794830459cd46a4abe72944f31
 }
