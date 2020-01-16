@@ -7,13 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddProductComponent implements OnInit {
 
+  fileName: string = '';
+  changed: boolean = false;
   constructor() { }
 
   ngOnInit() {
     
   }
 
-
+  getFileName(event) {
+    this.fileName = event.target.files[0].name
+    this.changed = true;
+    console.log(this.fileName)
+  }
 
 
 }

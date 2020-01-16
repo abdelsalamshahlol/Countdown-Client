@@ -5,6 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+
 // Components
 
 import { AppComponent } from './app.component';
@@ -66,13 +68,15 @@ console.log(`jQuery version: ${$.fn.jquery}`);
     LoginComponent,
     AddProductComponent,
     ProductDetailsComponent,
-    ContactComponent
+    ContactComponent 
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    OwlDateTimeModule, 
+    OwlNativeDateTimeModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],
