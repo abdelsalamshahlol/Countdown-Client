@@ -55,30 +55,37 @@
       <i class="now-ui-icons arrows-1_minimal-right"></i>
     </a>
   </div>
-  <div class="container">
-    <div class="row" style='padding: 0px 20px'>
-      <div class="col-md-4" *ngFor="let product of products">
-        <div class="card main-card" style="width: 450px;">
-          <div class="card card-background" [ngStyle]="{ 'background-image': 'url(' + product.image + ')'}" style="background-size: cover; margin-bottom: 0;">
-            <div class="myfooter">
-              <div class="card-footer text-left">
-                <div class="stats">
-                    <h4>{{product.last_auction_price}} TND</h4>
-                    <span>{{product.end_date}}</span>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+
+      </div>
+      <div class="col-md-9">
+        <div class="row" style='padding: 0px 20px'>
+          <div class="col-md-4" *ngFor="let product of products">
+            <div class="card main-card" >
+              <div class="card card-background" [ngStyle]="{ 'background-image': 'url(' + product.image + ')'}" style="background-size: cover; margin-bottom: 0;">
+                <div class="myfooter">
+                  <div class="card-footer text-left">
+                    <div class="stats">
+                        <h4>{{product.last_auction_price}} TND</h4>
+                        <span>{{product.end_date}}</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="stats" style="padding: 0px;">
-                <h4 class="card-title">{{product.name}}</h4>
-                <h5>Value: {{product.value}} TND</h5>
-            </div>
-            <p class="card-text">{{product.description}}</p>
-            <hr>
-            <div class="buttons-div">
-              <a [routerLink]="['/product/',product.id]" class="btn btn-primary" style="float: left">View Details</a>
-              <a href="#" class="btn btn-danger" style="float: right">Watch</a>
+              <div class="card-body">
+                <div class="stats" style="padding: 0px;">
+                    <h4 class="card-title">{{product.name}}</h4>
+                    <h5>Value: {{product.value}} TND</h5>
+                </div>
+                <p class="card-text">{{product.description}}</p>
+                <hr>
+                <div class="buttons-div">
+                  <a [routerLink]="['/product/',product.id]" class="btn btn-primary" style="float: left">View Details</a>
+                  <a href="#" class="btn btn-danger" style="float: right">Watch</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
