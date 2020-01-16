@@ -13,13 +13,16 @@ import {NavbarComponent} from './components/UI/navbar/navbar.component';
 import {FooterComponent} from './components/UI/footer/footer.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
+import { PricingComponent } from './components/UI/pricing/pricing.component';
+import { AddProductComponent } from './components/UI/add-product/add-product.component';
 
 // Routes array
 const routes: Routes = [
   {path: '', component: IndexComponent},
   {path: 'product', component: ProductComponent},
   {path: 'signup', component: SignupComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'add', component: AddProductComponent}
 ];
 
 // Testing jQuery
@@ -34,7 +37,9 @@ console.log(`jQuery version: ${$.fn.jquery}`);
     NavbarComponent,
     FooterComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    PricingComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
