@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
@@ -77,6 +78,7 @@ console.log(`jQuery version: ${$.fn.jquery}`);
     ReactiveFormsModule,
     OwlDateTimeModule, 
     OwlNativeDateTimeModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],

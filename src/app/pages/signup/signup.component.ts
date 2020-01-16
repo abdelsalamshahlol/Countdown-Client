@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { RouterModule, Router } from '@angular/router';
 
+/* This function inside helper folder 
+ * check if you have 2 input feilds to check the password
+ * we don't have it here i don't know why it is here !
+ */
 import { MustMatch } from '../../helpers/must-match.validator';
 
 @Component({
@@ -12,9 +18,9 @@ export class SignupComponent implements OnInit {
 
   registerForm: FormGroup;
   submitted: boolean = false;
-  userData: any = [];
+  isValid: boolean = true;
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder, private http: HttpClient, private router: Router) { }
   /**
    * Here i am using Validator to check all the fields are required
    * Also for the password to be more than 8 Charcaters
@@ -39,12 +45,26 @@ export class SignupComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-
     if (this.registerForm.invalid) {
       return;
     }
-    this.userData.push(this.registerForm.value);
-    console.log(this.userData)
+    this.http.post<any>('http://localhost:8085/api/user/signup', this.registerForm.value)
+      .subscribe(data => {
+        if ( data.registered ) {
+          // TODO: redirect user!
+          this.isValid = true
+          this.router.navigate(['/login'])
+        } else {
+          if ( data.msg === 'invalid email!' ) {
+            // TODO: invalid email show something red
+            this.isValid = false;
+          }
+          if ( data.msg === 'user already exist' ) {
+            // TODO: already exict show something
+            this.isValid = false;
+          }
+        }
+      })
     
   }
 
