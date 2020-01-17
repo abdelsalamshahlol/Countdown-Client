@@ -4,9 +4,8 @@ import {Routes, RouterModule} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-
-
 import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
+import { Ng5SliderModule } from 'ng5-slider';
 
 // Components
 
@@ -79,7 +78,8 @@ console.log(`jQuery version: ${$.fn.jquery}`);
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    Ng5SliderModule
   ],
   providers: [],
   bootstrap: [AppComponent],
