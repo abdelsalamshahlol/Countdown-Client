@@ -87,7 +87,7 @@
                                         [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                                     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                                         <div *ngIf="f.password.errors.required">Password is required</div>
-                                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters
+                                        <div *ngIf="f.password.errors.minlength">Password must be at least 8 characters
                                         </div>
                                     </div>
                                 </div>
@@ -112,6 +112,16 @@
     <div *ngIf="!isValid" class="alert alert-danger w-25" style="float: right; margin-right: 469px;" role="alert">
         <div class="container">
           <span style="font-weight: bold;">Enter Valid Data !</span>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">
+              <i class="now-ui-icons ui-1_simple-remove"></i>
+            </span>
+          </button>
+        </div>
+    </div>
+    <div *ngIf="exist" class="alert alert-danger w-25" style="float: right; margin-right: 469px;" role="alert">
+        <div class="container">
+          <span style="font-weight: bold;">Email Already exist !</span>
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">
               <i class="now-ui-icons ui-1_simple-remove"></i>

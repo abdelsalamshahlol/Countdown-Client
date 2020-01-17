@@ -19,6 +19,7 @@ export class SignupComponent implements OnInit {
   registerForm: FormGroup;
   submitted: boolean = false;
   isValid: boolean = true;
+  exist: boolean = false
 
   constructor(private _formBuilder: FormBuilder, private http: HttpClient, private router: Router) { }
   /**
@@ -49,22 +50,26 @@ export class SignupComponent implements OnInit {
       return;
     }
     this.http.post<any>('http://localhost:8085/api/user/signup', this.registerForm.value)
-      .subscribe(data => {
-        if ( data.registered ) {
-          // TODO: redirect user!
-          this.isValid = true
-          this.router.navigate(['/login'])
-        } else {
-          if ( data.msg === 'invalid email!' ) {
-            // TODO: invalid email show something red
-            this.isValid = false;
+      .subscribe({
+        next: data => {
+          if ( data.registered ) {
+            // TODO: redirect user!
+            this.isValid = true
+            this.router.navigate(['/login'])
+          } else {
+            if ( data.msg === 'invalid email!' ) {
+              // TODO: invalid email show something red
+              this.isValid = false;
+            }
+            if ( data.msg === 'user already exist' ) {
+              // TODO: already exict show something
+              this.isValid = false;
+            }
           }
-          if ( data.msg === 'user already exist' ) {
-            // TODO: already exict show something
-            this.isValid = false;
-          }
-        }
+        },
+        error: error => this.exist = true
       })
+      
     
   }
 
