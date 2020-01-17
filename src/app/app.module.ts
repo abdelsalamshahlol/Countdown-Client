@@ -1,10 +1,15 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {ReactiveFormsModule, FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
 
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+
+// Helpers
+import { JwtInterceptor } from './helpers/jwt.interceptor';
+import { ErrorInterceptor } from './helpers/error.interceptor'
 
 import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
 
@@ -26,24 +31,22 @@ import {AddProductComponent} from './components/UI/add-product/add-product.compo
 import {ProductDetailsComponent} from './pages/productDetails/productDetails.component';
 import {ContactComponent} from './pages/contact/contact.component';
 
-
+import { AuthGuard } from './helpers/auth.guard'
 // Routes array
 const routes: Routes = [
 
-  {path: '', component: IndexComponent},
-  {path: 'products', component: ProductComponent},
+  { path: '', component: IndexComponent },
+  { path: 'products', component: ProductComponent, canActivate: [AuthGuard]},
   {
     path: 'account', component: DashboardComponent,
     children: [
       {path: '', component: HomeComponent},
       {path: 'product', component: ProductUserComponent}
-    ]
-  },
+    ] , canActivate: [AuthGuard] },
   {path: 'signup', component: SignupComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'product/:id', component: ProductDetailsComponent},
-  {path: 'contact', component: ContactComponent}
-
+  {path: 'product/:id', component: ProductDetailsComponent, canActivate: [AuthGuard]},
+  {path: 'contact', component: ContactComponent, canActivate: [AuthGuard]}
 
 ];
 
@@ -79,7 +82,10 @@ console.log(`jQuery version: ${$.fn.jquery}`);
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent],
   exports: [RouterModule]
 })
