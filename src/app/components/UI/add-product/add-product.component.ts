@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class AddProductComponent implements OnInit {
 
   fileName: string = '';
-  changed: boolean = false;
   constructor() { }
 
   ngOnInit() {
@@ -16,8 +15,10 @@ export class AddProductComponent implements OnInit {
   }
 
   getFileName(event) {
-    this.fileName = event.target.files[0].name
-    this.changed = true;
+    if (event.target.files.length !== 0) {
+      this.fileName = event.target.files[0].name
+
+    }
     console.log(this.fileName)
   }
 
