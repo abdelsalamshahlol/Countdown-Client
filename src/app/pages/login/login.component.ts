@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     this.loginForm = this._formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]]
-    })
+    });
 
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
 
   // easy way to get all the form fields
   get f() {
-    return this.loginForm.controls
+    return this.loginForm.controls;
   }
 
   onSubmit() {
