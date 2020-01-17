@@ -20,6 +20,12 @@ export class AuthenticationService {
         return this.currentUserSubject.value;
     }
 
+    public isLoggedIn() {
+        console.log(this.currentUser)
+        return localStorage.getItem('currentUser')
+        // return this.currentUser ? true : false;
+    }
+
     login(email: string, password: string) {
         return this.http.post<any>(`http://localhost:8085/api/user/login`, { email, password })
             .pipe(map(user => {

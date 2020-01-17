@@ -36,17 +36,17 @@ import { AuthGuard } from './helpers/auth.guard'
 const routes: Routes = [
 
   { path: '', component: IndexComponent },
-  { path: 'products', component: ProductComponent, canActivate: [AuthGuard]},
+  { path: 'products', component: ProductComponent, canActivate: [AuthGuard] },
   {
     path: 'account', component: DashboardComponent,
     children: [
-      {path: '', component: HomeComponent},
-      {path: 'product', component: ProductUserComponent}
+      { path: '', component: HomeComponent },
+      { path: 'product', component: ProductUserComponent }
     ] , canActivate: [AuthGuard] },
-  {path: 'signup', component: SignupComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'product/:id', component: ProductDetailsComponent, canActivate: [AuthGuard]},
-  {path: 'contact', component: ContactComponent, canActivate: [AuthGuard]}
+  { path: 'signup', component: SignupComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'product/:id', component: ProductDetailsComponent, canActivate: [AuthGuard]},
+  { path: 'contact', component: ContactComponent }
 
 ];
 
