@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div class="wrapper">
     <div class="content">
         <div class="container">
@@ -44,10 +45,14 @@
                             <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form">
 
                                 <div class="input-group">
-                                    <div class="input-group-prepend"><span class="input-group-text"><i
-                                                class="now-ui-icons users_circle-08"></i></span></div>
-                                    <input formControlName="firstName" class="form-control" placeholder="First Name..."
-                                        type="text" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+                                    <div class="input-group-prepend"><span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span></div>
+                                    <input 
+                                    formControlName="firstName" 
+                                    class="form-control" 
+                                    placeholder="First Name..." 
+                                    type="text" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" 
+                                    >
                                     <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
                                         <div *ngIf="f.firstName.errors.required">First Name is required</div>
                                     </div>
@@ -67,7 +72,7 @@
                                     <div class="input-group-prepend"><span class="input-group-text"><i
                                                 class="now-ui-icons ui-1_email-85"></i></span></div>
                                     <input formControlName="email" class="form-control" placeholder="Your Email..."
-                                        type="text" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                                        type="text" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" required="required"/>
                                     <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                                         <div *ngIf="f.email.errors.required">Email is required</div>
                                         <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
@@ -102,6 +107,16 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div *ngIf="!isValid" class="alert alert-danger w-25" style="float: right; margin-right: 469px;" role="alert">
+        <div class="container">
+          <span style="font-weight: bold;">Enter Valid Data !</span>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">
+              <i class="now-ui-icons ui-1_simple-remove"></i>
+            </span>
+          </button>
         </div>
     </div>
 </div>
