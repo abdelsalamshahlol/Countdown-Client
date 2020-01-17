@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import {Router, ActivatedRoute, Params} from '@angular/router';
+import { Product } from '../../models/product';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-productDetails',
@@ -6,21 +10,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./productDetails.component.scss']
 })
 export class ProductDetailsComponent implements OnInit {
-
-  product= {
-    id: "1",
-    name: "Product 1",
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-    image: 'https://source.unsplash.com/1600x900/?product',
-    category: "Sport",
-    last_auction_price: 800,
-    value: 620,
-    end_date: "23:00:00"
-  }
-  constructor() { }
+  product: Product;
+  productId: string;
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private productService: ProductService
+  ) { }
 
   ngOnInit() {
-    // service to get the element data by his id
+    this.productId = this.activatedRoute.snapshot.params.id
+    this.productService.getProductById(this.productId).subscribe(product => {
+      this.product = product
+    })
+
   }
 
 }

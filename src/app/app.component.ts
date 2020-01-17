@@ -1,10 +1,8 @@
 import {Component} from '@angular/core';
-import {RouterOutlet} from '@angular/router';
 import {fader} from './helpers/route-animations';
 import {RouterOutlet, Router} from '@angular/router';
 import { AuthenticationService } from './services';
 import { User } from './models';
-
 
 
 @Component({
