@@ -5,7 +5,6 @@ import { AuthenticationService } from './services';
 import { User } from './models';
 
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

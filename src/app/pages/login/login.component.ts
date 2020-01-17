@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { first } from 'rxjs/operators';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {first} from 'rxjs/operators';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {HttpClient} from '@angular/common/http';
 
-import { AuthenticationService } from '../../services/authentication.service';
+import {AuthenticationService} from '../../services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -22,15 +22,15 @@ export class LoginComponent implements OnInit {
   error: string = '';
 
   constructor(
-    private _formBuilder: FormBuilder, 
+    private _formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService
   ) {
-      // Redirect to home if already logged in
-      if (this.authenticationService.currentUserValue) { 
-        this.router.navigate(['/']);
-      }
+    // Redirect to home if already logged in
+    if (this.authenticationService.currentUserValue) {
+      this.router.navigate(['/']);
+    }
   }
 
   ngOnInit() {
@@ -44,7 +44,9 @@ export class LoginComponent implements OnInit {
   }
 
   // easy way to get all the form fields
-  get f() { return this.loginForm.controls }
+  get f() {
+    return this.loginForm.controls
+  }
 
   onSubmit() {
     this.submitted = true;

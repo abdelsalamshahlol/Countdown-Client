@@ -38,13 +38,13 @@ productRoutes.route('/update/:id').put( (req, res) => {
   Product.findByIdAndUpdate(
     {_id: req.params.id},
     {
-      last_auction_price: req.body.auction,
+      last_auction_price: req.body.last_auction_price,
       $push: {
         participants: {
             $each: [
               {
                 user: req.body.userId,
-                price: req.body.auction,
+                price: req.body.last_auction_price,
                 date: Date.now()
               }
             ],

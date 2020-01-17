@@ -34,7 +34,6 @@ import {FilterProductsComponent} from './filter-products/filter-products.compone
 import {AuthGuard} from './helpers/auth.guard';
 // Routes array
 const routes: Routes = [
-
   {path: '', component: IndexComponent},
   {path: 'products', component: ProductComponent, canActivate: [AuthGuard]},
   {
@@ -47,13 +46,11 @@ const routes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'login', component: LoginComponent},
   {path: 'product/:id', component: ProductDetailsComponent, canActivate: [AuthGuard]},
-  {path: 'contact', component: ContactComponent, canActivate: [AuthGuard]}
-
+  {path: 'contact', component: ContactComponent}
 ];
 
 // Testing jQuery
 declare var $: any;
-console.log(`jQuery version: ${$.fn.jquery}`);
 
 @NgModule({
   declarations: [
