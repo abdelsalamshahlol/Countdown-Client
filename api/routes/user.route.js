@@ -70,7 +70,8 @@ userRoutes.route('/login').post( (req, res) => {
 
   User.findOne({ email })
   .then(user => {
-    if (user.length === 0) {
+    console.log(user)
+    if ( !user ) {
       res.status(301).json({authed: false, msg: 'user doesnt exist'});
     } else {
       bcrypt.compare(password, user.hashedPassword)
