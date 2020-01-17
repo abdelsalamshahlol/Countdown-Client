@@ -30,12 +30,12 @@ import { AddProductComponent } from './components/UI/add-product/add-product.com
 import { ProductDetailsComponent } from './pages/productDetails/productDetails.component';
 import { ContactComponent } from './pages/contact/contact.component';
 
-
+import { AuthGuard } from './helpers/auth.guard'
 // Routes array
 const routes: Routes = [
 
-  {path: '', component: IndexComponent},
-  {path: 'products', component: ProductComponent},
+  { path: '', component: IndexComponent },
+  { path: 'products', component: ProductComponent, canActivate: [AuthGuard]},
   {
     path: 'account', component: DashboardComponent,
     children: [
@@ -43,12 +43,11 @@ const routes: Routes = [
       {path: 'product', component: ProductUserComponent}
       
     ]
-  },
-  {path: 'signup', component: SignupComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'product/:id', component: ProductDetailsComponent},
-  {path: 'contact', component: ContactComponent }
-
+  , canActivate: [AuthGuard] },
+  { path: 'signup', component: SignupComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'product/:id', component: ProductDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'contact', component: ContactComponent, canActivate: [AuthGuard] }
 
 ];
 
