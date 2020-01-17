@@ -1,5 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-transparent bg-primary" [ngClass]="{'fixed-top': isFixed, 'navbar-transparent' : isTransparent}" color-on-scroll="200">
-  <span class="text-danger">{{isFixed}}</span>
+<nav class="navbar navbar-expand-lg navbar-transparent bg-primary" [ngClass]="{'fixed-top': isFixed, 'navbar-transparent' : isTransparent}" [attr.color-on-scroll]="detachOnScroll">
   <div class="container">
     <div class="navbar-translate">
       <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navbarSupportedContent"
