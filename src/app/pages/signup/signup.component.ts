@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { RouterModule, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 /* This function inside helper folder 
  * check if you have 2 input feilds to check the password
@@ -18,7 +18,7 @@ export class SignupComponent implements OnInit {
 
   registerForm: FormGroup;
   submitted: boolean = false;
-  isValid: boolean = true;
+  exist: boolean = false
 
   constructor(private _formBuilder: FormBuilder, private http: HttpClient, private router: Router) { }
   /**
@@ -30,7 +30,7 @@ export class SignupComponent implements OnInit {
     this.registerForm = this._formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]]
     })
   }
@@ -49,22 +49,17 @@ export class SignupComponent implements OnInit {
       return;
     }
     this.http.post<any>('http://localhost:8085/api/user/signup', this.registerForm.value)
-      .subscribe(data => {
-        if ( data.registered ) {
-          // TODO: redirect user!
-          this.isValid = true
-          this.router.navigate(['/login'])
-        } else {
-          if ( data.msg === 'invalid email!' ) {
-            // TODO: invalid email show something red
-            this.isValid = false;
+      .subscribe({
+        next: data => {
+          console.log(data)
+          if ( data.registered ) {
+            // TODO: redirect user!
+            // this.router.navigate(['/login'])
           }
-          if ( data.msg === 'user already exist' ) {
-            // TODO: already exict show something
-            this.isValid = false;
-          }
-        }
+        },
+        error: error => this.exist = true
       })
+      
     
   }
 
