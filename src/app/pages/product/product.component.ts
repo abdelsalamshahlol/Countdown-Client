@@ -19,6 +19,7 @@ export class ProductComponent implements OnInit {
     private productService: ProductService
   ) {
   }
+
   filterForm: FormGroup = new FormGroup({
     sliderControl: new FormControl([0, 0])
   });
@@ -41,8 +42,9 @@ export class ProductComponent implements OnInit {
   unfilteredProducts;
 
   // products: Product[];
-  products =  [
-    { id: "1",
+  products = [
+    {
+      id: "1",
       name: "Product 1",
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
       image: 'https://source.unsplash.com/1600x900/?product',
@@ -51,16 +53,18 @@ export class ProductComponent implements OnInit {
       value: 620,
       end_date: "23:00:00"
     },
-    { id: 2,
+    {
+      id: 2,
       name: "Product 2",
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
       image: 'https://source.unsplash.com/1600x900/?product',
-      category: "Sport",
+      category: "arts",
       last_auction_price: 800,
       value: 620,
       end_date: "23:00:00"
     },
-    { id: 3,
+    {
+      id: 3,
       name: "Product 3",
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
       image: 'https://source.unsplash.com/1600x900/?product',
@@ -69,7 +73,8 @@ export class ProductComponent implements OnInit {
       value: 620,
       end_date: "23:00:00"
     },
-    { id: 5,
+    {
+      id: 5,
       name: "Product 4",
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
       image: 'https://source.unsplash.com/1600x900/?product',
@@ -89,7 +94,7 @@ export class ProductComponent implements OnInit {
       end_date: "23:00:00"
     }]
 
-      resetForm(): void {
+  resetForm(): void {
     this.filterForm.reset({sliderControl: [0, 0]});
     this.products = this.unfilteredProducts.slice();
 
@@ -105,6 +110,11 @@ export class ProductComponent implements OnInit {
         return product;
       }
     });
+  }
+
+  filterByCat(category) {
+    this.products = this.unfilteredProducts.slice();
+    this.products = this.products.filter((product) => category.toLowerCase() === product.category.toLowerCase());
   }
 
   ngOnInit() {
