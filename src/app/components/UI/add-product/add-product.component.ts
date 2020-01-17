@@ -19,7 +19,7 @@ export class AddProductComponent implements OnInit {
       this.fileName = event.target.files[0].name
 
     }
-    console.log(this.fileName)
+    console.log(event.target.files)
   }
 
 
