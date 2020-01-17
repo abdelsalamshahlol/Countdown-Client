@@ -1,5 +1,5 @@
 .page-header-image {
-  background-image: url('../../../assets/img/bg16.jpg');
+  background-image: url('../../../assets/img/app/hero.jpg');
   z-index: 0;
   background-size: cover;
 }
@@ -10,5 +10,13 @@
   width: 100%;
   height: 100%;
   position: absolute;
-  opacity: 0.1;
+  opacity: 0.3;
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+}
+
+.description {
+  font-family: 'Lato', sans-serif;
 }

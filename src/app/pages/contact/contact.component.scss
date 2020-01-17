@@ -7,3 +7,17 @@
   width: 150px;
   font-size: 18px;
 }
+
+.shadow {
+  background: #615e5e;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  position: absolute;
+  z-index: 1;
+}
+
+nav.navbar.navbar-expand-lg.bg-primary {
+  margin-bottom: 0 !important;
+  display: none;
+}
