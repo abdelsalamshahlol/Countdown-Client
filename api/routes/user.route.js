@@ -65,6 +65,7 @@ userRoutes.route('/delete/:id').get(function (req, res) {
 });
 
 userRoutes.route('/login').post( (req, res) => {
+  console.log(req.body)
   const { email, password } = req.body
 
   User.findOne({ email })
