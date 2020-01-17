@@ -61,10 +61,26 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-3">
+        <div class="card card-pricing" data-background-color="orange">
+          <div class="card-body">
+            <h1 class="card-title">Filter</h1>
+<!--            <ul>-->
+<!--              <li><i class="now-ui-icons ui-1_check text-primary"></i> Unlimited MB</li>-->
+<!--              <li><i class="now-ui-icons ui-1_check text-primary"></i> Unlimited emails</li>-->
+<!--              <li><i class="now-ui-icons ui-1_check text-primary"></i> Unlimited Databases</li>-->
+<!--              <li><i class="now-ui-icons ui-1_check text-primary"></i> Full Support</li>-->
+<!--            </ul>-->
+            <form action="#">
 
+            </form>
+            <a href="#pablo" class="btn btn-neutral btn-default disabled btn-round">
+              Current Plan
+            </a>
+          </div>
+        </div>
       </div>
       <div class="col-md-9">
-        <div class="row" style='padding: 0px 20px'>
+        <div class="row">
           <div class="col-md-4" *ngFor="let product of products">
             <div class="card main-card">
               <div class="card card-background" [ngStyle]="{ 'background-image': 'url(' + product.image + ')'}"

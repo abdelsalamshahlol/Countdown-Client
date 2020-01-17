@@ -25,6 +25,7 @@ import {LoginComponent} from './pages/login/login.component';
 import {AddProductComponent} from './components/UI/add-product/add-product.component';
 import {ProductDetailsComponent} from './pages/productDetails/productDetails.component';
 import {ContactComponent} from './pages/contact/contact.component';
+import { FilterProductsComponent } from './filter-products/filter-products.component';
 
 
 // Routes array
@@ -67,7 +68,8 @@ console.log(`jQuery version: ${$.fn.jquery}`);
     LoginComponent,
     AddProductComponent,
     ProductDetailsComponent,
-    ContactComponent
+    ContactComponent,
+    FilterProductsComponent
   ],
   imports: [
     BrowserModule,
