@@ -82,17 +82,9 @@
     <div class="content">
       <app-stats [products]="8590" [productsSold]="2" [productsBought]="0" [auctionsEntered]="0"></app-stats>
       <div class="row">
-        <div class="col-md-12">
-          <p class="text-center">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores enim eos ipsum maxime
-            numquam saepe sapiente sequi veritatis. Culpa cum exercitationem maiores obcaecati provident quae quis,
-            quisquam temporibus veritatis vitae.</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-10 m-auto">
-          <router-outlet></router-outlet>
-        </div>
+       <div class="col-12 " [@routeAnimations]="prepareRoute(outlet)">
+         <router-outlet #outlet="outlet"></router-outlet>
+       </div>
       </div>
     </div>
     <!--    End Content Area-->
