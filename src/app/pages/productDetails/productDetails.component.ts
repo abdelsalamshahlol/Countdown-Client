@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import {Product} from '../../models/product';
 import {ProductService} from '../../services/product.service';
+import {BidService} from '../../services/bid.service';
 
 @Component({
   selector: 'app-productDetails',
@@ -15,7 +16,8 @@ export class ProductDetailsComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private productService: ProductService
+    private productService: ProductService,
+    private bidService: BidService
   ) {
   }
 
@@ -24,6 +26,13 @@ export class ProductDetailsComponent implements OnInit {
     this.productService.getProductById(this.productId).subscribe(product => {
       this.product = product;
     });
+
+    // connect to the product bidding
+    this.bidService.joinLiveBid(this.productId);
+  }
+
+  bid(value){
+    console.log(value)
   }
 
 }

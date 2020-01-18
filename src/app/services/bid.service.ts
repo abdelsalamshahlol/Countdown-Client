@@ -9,7 +9,12 @@ export class BidService {
   constructor(private socket: Socket) {
   }
 
-  bidOnProduct(bid) {
-    this.socket.emit('bid', bid);
+  // Users can join bidding on the product using its ID
+  joinLiveBid(productId) {
+    this.socket.emit('join', productId);
+  }
+
+  bidOnProduct(bidObj) {
+    this.socket.emit('bid', bidObj);
   }
 }
