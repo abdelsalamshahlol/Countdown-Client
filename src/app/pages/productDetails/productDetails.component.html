@@ -27,10 +27,11 @@
         </a>
       </div>
 
-      <p class="blockquote blockquote-primary">
-        "{{product.description}}"<br><br>
+      <div class="blockquote">
+        <span class="text-primary">Advert by:</span>
+        <p>Username</p>
         <small>Owner of the product here</small>
-      </p>
+      </div>
       <div class="row">
         <div class="col">
           <h5 class="title">Make a bid</h5>
@@ -55,7 +56,8 @@
     <div class="col-md-6 ml-auto mr-auto">
       <h2 class="title"> {{product.name}} </h2>
       <h5 class="category">{{product.category}}</h5>
-      <h2 class="main-price">Value: {{product.value}} TND</h2>
+      <h4 class="main-price">Current Bid: <span class="text-danger">{{product.value | currency:'TND'}}</span></h4>
+      <h4 class="main-price">Starting Price: <span class="text-info">{{product.startValue | currency:'TND'}}</span></h4>
 
       <div id="accordion" role="tablist" aria-multiselectable="true" class="card-collapse">
         <div class="card card-plain">
@@ -69,9 +71,7 @@
 
           <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" style="">
             <div class="card-body">
-              <p>Eres' daring 'Grigri Fortune' swimsuit has the fit and coverage of a bikini in a one-piece silhouette.
-                This fuchsia style is crafted from the label's sculpting peau douce fabric and has flattering cutouts
-                through the torso and back. Wear yours with mirrored sunglasses on vacation.</p>
+              <p>{{product.description}}</p>
             </div>
           </div>
         </div>

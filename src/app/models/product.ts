@@ -3,7 +3,7 @@
   owner: string;
   description: string;
   category: string;
-  last_auction_price: number;
+  startValue: number;
   value: number;
   initial_date: Date;
   end_date: Date;
