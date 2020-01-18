@@ -1,4 +1,5 @@
 const io = require('socket.io');
+const productModel = require('../db/models/productModel');
 
 function init(serverIO) {
   serverIO.on('connection', function (socket) {
@@ -12,16 +13,28 @@ function init(serverIO) {
       socket.on('bid', bid => {
         console.log({bid});
         // Update the product value
-        // Return the product value
-
-        socket.to(bid.productId).emit('bid:broadcast', {
-          msg: 'Someone made a bid',
-          currentValue: bid
-        })
-        // serverIO.in(bid.productId).emit('bid:broadcast', {
-        //   msg: 'Someone made a bid',
-        //   currentValue: bid
-        // })
+        let currentValue;
+        productModel.findById(productId)
+          .then(product => {
+            let startingValue = product.value > 0 ? product.value : product.startValue;
+            currentValue = bid.value + startingValue;
+            console.log({product});
+            return productModel.findByIdAndUpdate(productId, {value: currentValue});
+          })
+          .then(result => {
+            // Return the product value
+            // socket.to(bid.productId).emit('bid:broadcast', {
+            //   msg: 'Someone made a bid',
+            //   currentValue
+            // });
+            serverIO.in(bid.productId).emit('bid:broadcast', {
+              msg: 'Someone made a bid',
+              currentValue: result.value
+            });
+          })
+          .catch(err => {
+            console.log({err})
+          });
       });
     });
   });

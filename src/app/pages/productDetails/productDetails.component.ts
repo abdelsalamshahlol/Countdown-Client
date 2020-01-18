@@ -28,7 +28,6 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit() {
     this.productId = this.activatedRoute.snapshot.params.id;
     this.productService.getProductById(this.productId).subscribe(product => {
-      console.log(product)
       this.product = product;
     });
 
@@ -42,8 +41,14 @@ export class ProductDetailsComponent implements OnInit {
 
     // Handle broadcasts
     this.bidService.handleBroadCast((broadcast) => {
-      console.log({broadcast});
+      console.log({broadcast, btn: this.isDisabled});
+      this.product.value = broadcast.currentValue;
       this.isDisabled = false;
+      // Play notification sound
+      const alertSound = new Audio('assets/sounds/bid.mp3');
+      alertSound.play().catch(err => {
+        console.log('Can\'t play sound');
+      });
     });
   }
 
@@ -57,4 +62,7 @@ export class ProductDetailsComponent implements OnInit {
     this.bidService.bidOnProduct(userBid);
   }
 
+  updateValue(value) {
+    this.product.value = value;
+  }
 }
