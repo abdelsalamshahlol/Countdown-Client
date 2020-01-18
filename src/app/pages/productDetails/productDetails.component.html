@@ -1,11 +1,11 @@
 <app-navbar [isFixed]="false" [isTransparent]="false" [detachOnScroll]="5000"></app-navbar>
 <!--Note that the wrapper is mandatory by the UI kit to render properly-->
-<div class="wrapper container mt-5">
+<div class="wrapper container mt-5" *ngIf="product">
   <div class="row">
     <div class="col-md-5">
       <div id="productCarousel" class="carousel slide" data-ride="carousel" data-interval="8000">
         <ol class="carousel-indicators">
-          <li data-target="#productCarousel" *ngFor="let image of product?.images; index as i"
+          <li data-target="#productCarousel" *ngFor="let image of product['images']; index as i"
               [attr.data-slide-to]="i" [ngClass]="{'active': i === 0}">
           </li>
         </ol>
