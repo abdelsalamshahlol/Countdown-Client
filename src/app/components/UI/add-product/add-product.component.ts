@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddProductComponent implements OnInit {
 
-  fileName: string = '';
+  files: string = '';
   constructor() { }
 
   ngOnInit() {
@@ -16,10 +16,16 @@ export class AddProductComponent implements OnInit {
 
   getFileName(event) {
     if (event.target.files.length !== 0) {
-      this.fileName = event.target.files[0].name
+      // this.fileName = event.target.files[0].name
+      for (var key in event.target.files) {
+        if (event.target.files[key].name !== 'item' && event.target.files[key].name !== undefined){
+          this.files += `${event.target.files[key].name}, `
+          console.log(event.target.files[key].name)
+        }
+      }
 
     }
-    console.log(event.target.files)
+    console.log(this.files)
   }
 
 
