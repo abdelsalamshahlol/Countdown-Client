@@ -4,16 +4,16 @@ import {Routes, RouterModule} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {SocketIoModule, SocketIoConfig} from 'ngx-socket-io';
 
 // Helpers
 import {JwtInterceptor} from './helpers/jwt.interceptor';
 import {ErrorInterceptor} from './helpers/error.interceptor';
-
 import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
+import {AuthGuard} from './helpers/auth.guard';
 import {Ng5SliderModule} from 'ng5-slider';
 
 // Components
-
 import {AppComponent} from './app.component';
 import {IndexComponent} from './pages/home/index.component';
 import {ProductComponent} from './pages/products/product.component';
@@ -30,7 +30,6 @@ import {AddProductComponent} from './components/account-UI/add-product/add-produ
 import {ProductDetailsComponent} from './pages/productDetails/productDetails.component';
 import {ContactComponent} from './pages/contact/contact.component';
 
-import {AuthGuard} from './helpers/auth.guard';
 // Routes array
 const routes: Routes = [
   {path: '', component: IndexComponent},
@@ -48,8 +47,9 @@ const routes: Routes = [
   {path: 'contact', component: ContactComponent}
 ];
 
-// Testing jQuery
 declare var $: any;
+
+const config: SocketIoConfig = {url: 'http://localhost:8085', options: {}};
 
 @NgModule({
   declarations: [
@@ -78,7 +78,8 @@ declare var $: any;
     OwlNativeDateTimeModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    Ng5SliderModule
+    Ng5SliderModule,
+    SocketIoModule.forRoot(config)
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
