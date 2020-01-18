@@ -7,7 +7,7 @@
   value: number;
   initial_date: Date;
   end_date: Date;
-  participants: Array;
+  participants: Array<any>;
   images: Array<string>;
   main_image: string;
 }
