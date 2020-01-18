@@ -10,7 +10,8 @@
           </li>
         </ol>
         <div class="carousel-inner" role="listbox">
-          <div class="carousel-item" *ngFor="let image of product['images']; index as i" [ngClass]="{'active': i === 0}">
+          <div class="carousel-item" *ngFor="let image of product['images']; index as i"
+               [ngClass]="{'active': i === 0}">
             <img class="d-block img-raised" src={{image}} alt="First slide">
           </div>
         </div>
@@ -37,12 +38,16 @@
       </div>
       <div class="row">
         <div class="col">
-          <button class="btn btn-outline-primary mt-4" (click)="bid(5)">5 <i class="fas fa-dollar-sign"></i></button>
-          <button class="btn btn-outline-primary mt-4 ml-2" (click)="bid(10)">10 <i class="fas fa-dollar-sign"></i>
+          <button class="btn btn-outline-primary mt-4" [disabled]="isDisabled" (click)="bid(5)">5 <i
+            class="fas fa-dollar-sign"></i></button>
+          <button class="btn btn-outline-primary mt-4 ml-2" [disabled]="isDisabled" (click)="bid(10)">10
+            <i class="fas fa-dollar-sign"></i>
           </button>
-          <button class="btn btn-outline-primary mt-4 ml-2" (click)="bid(15)">15 <i class="fas fa-dollar-sign"></i>
+          <button class="btn btn-outline-primary mt-4 ml-2" [disabled]="isDisabled" (click)="bid(15)">15
+            <i class="fas fa-dollar-sign"></i>
           </button>
-          <button class="btn btn-outline-primary mt-4 ml-2" (click)="bid(20)">20 <i class="fas fa-dollar-sign"></i>
+          <button class="btn btn-outline-primary mt-4 ml-2" [disabled]="isDisabled" (click)="bid(20)">20
+            <i class="fas fa-dollar-sign"></i>
           </button>
         </div>
       </div>

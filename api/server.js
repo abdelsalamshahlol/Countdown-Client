@@ -6,7 +6,7 @@ const express = require('express'),
   config = require('./db/db');
 http = require('http');
 require('dotenv').config();
-var io = require('socket.io');
+const socketIO = require('./helpers/io');
 
 mongoose.Promise = global.Promise;
 
@@ -33,15 +33,11 @@ app.use('/api/products', productRoute);
 
 const httpServer = http.createServer(app);
 const port = process.env.PORT || 8085;
-io = io(httpServer);
+
+// Socket IO Logic
+let serverIO = socketIO.io(httpServer);
+socketIO.init(serverIO);
 
 httpServer.listen(port, function () {
   console.log(`listening on http://localhost:${port}`);
-});
-
-io.on('connection', function (socket) {
-  console.log(`a user connected to socket`, socket.id);
-  socket.on('bid', bid => {
-    console.log(bid)
-  });
 });

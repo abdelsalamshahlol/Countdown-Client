@@ -15,6 +15,7 @@ export class ProductDetailsComponent implements OnInit {
   product: Product;
   productId: string;
   private userToken;
+  isDisabled: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -30,11 +31,18 @@ export class ProductDetailsComponent implements OnInit {
       this.product = product;
     });
 
-    // connect to the product bidding
+    // Connect to the product bidding
     this.bidService.joinLiveBid(this.productId);
-    // get the current user token
+
+    // Get the current user token
     this.authService.currentUser.subscribe(user => {
       this.userToken = user.token;
+    });
+
+    // Handle broadcasts
+    this.bidService.handleBroadCast((broadcast) => {
+      console.log({broadcast});
+      this.isDisabled = false;
     });
   }
 
@@ -43,8 +51,8 @@ export class ProductDetailsComponent implements OnInit {
       value,
       token: this.userToken
     };
-    console.log({userBid})
-    // this.bidService.bidOnProduct(userBid);
+    this.isDisabled = true;
+    this.bidService.bidOnProduct(userBid);
   }
 
 }

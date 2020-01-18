@@ -20,7 +20,14 @@ const productSchema = new mongoose.Schema({
     type: Number,
     default: "0"
   },
-  value: Number,
+  startValue: {
+    type: Number,
+    required: true
+  },
+  value: {
+    type: Number,
+    default: 0
+  },
   initial_date: {
     type: Date,
     default: Date.now
@@ -36,10 +43,14 @@ const productSchema = new mongoose.Schema({
       date: Date
     }
   ]
+});
 
-})
+productSchema.pre('save', (next) => {
+  this.value = this.get('startValue');
+  next();
+});
 
-var Product = mongoose.model('Product', productSchema);
+const Product = mongoose.model('Product', productSchema);
 // For testing only << To BE DELETED in PRODUCTION >>
 // let product = new Product({
 //   name: 'Audi RS7',
