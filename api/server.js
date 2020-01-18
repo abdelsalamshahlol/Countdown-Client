@@ -23,7 +23,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 app.use('/api/user', userRoute);
-app.use('/api/product', productRoute);
+app.use('/api/products', productRoute);
 
 const port = process.env.PORT || 8085;
 

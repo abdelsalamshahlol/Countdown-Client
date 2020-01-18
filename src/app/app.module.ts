@@ -15,21 +15,20 @@ import {Ng5SliderModule} from 'ng5-slider';
 // Components
 
 import {AppComponent} from './app.component';
-import {IndexComponent} from './pages/index/index.component';
-import {ProductComponent} from './pages/product/product.component';
+import {IndexComponent} from './pages/home/index.component';
+import {ProductComponent} from './pages/products/product.component';
 import {NavbarComponent} from './components/UI/navbar/navbar.component';
 import {FooterComponent} from './components/UI/footer/footer.component';
-import {DashboardComponent} from './pages/admin/dashboard/dashboard.component';
-import {StatsComponent} from './components/admin-UI/stats/stats.component';
-import {SidebarComponent} from './components/admin-UI/sidebar/sidebar.component';
-import {HomeComponent} from './pages/admin/home/home.component';
-import {ProductUserComponent} from './pages/admin/product-user/product-user.component';
+import {DashboardComponent} from './pages/account/dashboard/dashboard.component';
+import {StatsComponent} from './components/account-UI/stats/stats.component';
+import {SidebarComponent} from './components/account-UI/sidebar/sidebar.component';
+import {HomeComponent} from './pages/account/home/home.component';
+import {ProductUserComponent} from './pages/account/product-user/product-user.component';
 import {SignupComponent} from './pages/signup/signup.component';
 import {LoginComponent} from './pages/login/login.component';
-import {AddProductComponent} from './components/UI/add-product/add-product.component';
+import {AddProductComponent} from './components/account-UI/add-product/add-product.component';
 import {ProductDetailsComponent} from './pages/productDetails/productDetails.component';
 import {ContactComponent} from './pages/contact/contact.component';
-import {FilterProductsComponent} from './filter-products/filter-products.component';
 
 import {AuthGuard} from './helpers/auth.guard';
 // Routes array
@@ -45,7 +44,7 @@ const routes: Routes = [
   },
   {path: 'signup', component: SignupComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'product/:id', component: ProductDetailsComponent, canActivate: [AuthGuard]},
+  {path: 'products/:id', component: ProductDetailsComponent, canActivate: [AuthGuard]},
   {path: 'contact', component: ContactComponent}
 ];
 
@@ -69,7 +68,6 @@ declare var $: any;
     AddProductComponent,
     ProductDetailsComponent,
     ContactComponent,
-    FilterProductsComponent
   ],
   imports: [
     BrowserModule,
