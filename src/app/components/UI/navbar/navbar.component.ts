@@ -20,8 +20,8 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isLoggedIn = this.authenticationService.isLoggedIn() ? true : false
-    console.log(this.isLoggedIn)
+    this.isLoggedIn = this.authenticationService.isLoggedIn() ? true : false;
+    console.log(this.isLoggedIn);
   }
 
 
