@@ -50,7 +50,6 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     }
   }
 
-
   ngOnInit() {
     this.productId = this.activatedRoute.snapshot.params.id;
     this.productService.getProductById(this.productId).subscribe(product => {
