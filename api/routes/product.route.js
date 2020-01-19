@@ -8,7 +8,7 @@ productRoutes.route('/add').post( (req, res) => {
   let product = new Product(req.body);
   product.save()
   .then(product => {
-    res.status(200).json({msg: 'product added successfully'});
+    res.status(200).json({msg: 'products added successfully'});
   })
   .catch(err => {
     res.status(400).json({msg: "unable to save to database"});
@@ -23,18 +23,26 @@ productRoutes.route('/getAll').get( (req, res) => {
 
 productRoutes.route('/:id').get( (req, res) => {
   let id = req.params.id;
-  Product.findById(id, (err, product) => {
-    res.json(product);
+  Product.findById(id)
+  .populate("participants.user")
+  .exec((err, product) => {
+    if (err) {
+      res.status(400).json({msg: "cant update the database"});
+    } else {
+      res.json(product);
+    }
   });
+
 });
 
-productRoutes.route('/delete/:id').get( (req, res) => {
+productRoutes.route('/delete/:id').delete( (req, res) => {
   Product.findByIdAndRemove({_id: req.params.id}, function(err, product){
       (err) ? res.json(err) : res.json({"msg": 'Successfully removed'});
   });
 });
 
 productRoutes.route('/update/:id').put( (req, res) => {
+  console.log("updating product" + req.params.id + " by the value " + req.body.userId)
   Product.findByIdAndUpdate(
     {_id: req.params.id},
     {
@@ -88,8 +96,35 @@ productRoutes.route('/getByCategory/:category').get( (req, res) => {
 
 productRoutes.route('/getByUser/:userId').get( (req, res) => {
   var userId = req.params.userId
-  Product.find({end_date: { $gte: new Date() }, owner: userId}, (err, products) => {
+  Product.find({owner: userId}, (err, products) => {
     (err) ? console.log(err) : res.json(products)
+  });
+});
+
+productRoutes.route('/getByWinner/:userId').get( (req, res) => {
+  var userId = req.params.userId
+  Product.find({winner: userId}, (err, products) => {
+    (err) ? console.log(err) : res.json(products)
+  });
+});
+
+productRoutes.route('/updateWinner/:id').put( (req, res) => {
+  Product.updateOne(
+    {_id: req.params.id},
+    {
+      $set: { 
+        winner: req.body.winner._id
+      }
+    },
+    {new: true, upset: true}
+  )
+  .populate("winner")
+  .exec((err, product) => {
+    if (err) {
+      res.status(400).json({msg: "cant get winner"});
+    } else {
+      res.status(200).json({product, msg: 'we have a winner'});
+    }
   });
 });
 

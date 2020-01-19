@@ -51,10 +51,10 @@ export class SignupComponent implements OnInit {
     this.http.post<any>('http://localhost:8085/api/user/signup', this.registerForm.value)
       .subscribe({
         next: data => {
-          console.log(data)
+          console.log('data',data)
           if ( data.registered ) {
             // TODO: redirect user!
-            // this.router.navigate(['/login'])
+            this.router.navigate(['/login'])
           }
         },
         error: error => this.exist = true

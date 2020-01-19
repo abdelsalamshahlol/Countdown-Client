@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-transparent bg-primary" [ngClass]="{'fixed-top': isFixed, 'navbar-transparent' : isTransparent}" [attr.color-on-scroll]="detachOnScroll">
+<nav class="navbar navbar-expand-lg navbar-transparent bg-primary"
+     [ngClass]="{'fixed-top': isFixed, 'navbar-transparent' : isTransparent}" [attr.color-on-scroll]="detachOnScroll">
   <div class="container">
     <div class="navbar-translate">
       <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navbarSupportedContent"
@@ -9,12 +10,14 @@
       </button>
       <a class="navbar-brand" routerLink="/">
         Countdown logo
-<!--        <img src="assets/img/app/svg18.svg" alt="logo" class="img-fluid">-->
+        <!--        <img src="assets/img/app/svg18.svg" alt="logo" class="img-fluid">-->
       </a>
     </div>
 
-    <div class="collapse navbar-collapse show" style="font-size: 14pt; font-weight: bold; font-family: 'Lato', sans-serif;"  data-nav-image="./assets/img//blurred-image-1.jpg">
-      <ul class="navbar-nav mx-auto" >
+    <div class="collapse navbar-collapse show"
+         style="font-size: 14pt; font-weight: bold; font-family: 'Lato', sans-serif;"
+         data-nav-image="./assets/img//blurred-image-1.jpg">
+      <ul class="navbar-nav mx-auto">
         <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
           <a class="nav-link" routerLink="/">
             Home
@@ -33,6 +36,13 @@
       </ul>
 
       <ul class="nav navbar-nav">
+<!-- Temporary button -->
+        <!-- <li class="nav-item">
+          <a class="nav-link" (click)="addProducts()">
+            TEMPORARY - ADD PRODUCTS using API
+          </a>
+        </li> -->
+<!-- end of temporary button -->
         <li class="nav-item" *ngIf="!isLoggedIn">
           <a class="nav-link" href="/login">
             Login
