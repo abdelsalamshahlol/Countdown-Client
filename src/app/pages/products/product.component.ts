@@ -4,6 +4,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {Product} from '../../models/product';
+import { UserService } from '../../services/user.service';
 import {ProductService} from '../../services/product.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class ProductComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private router: Router,
+    private userService: UserService,
     private productService: ProductService
   ) {
   }

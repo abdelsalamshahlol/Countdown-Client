@@ -12,6 +12,7 @@ import {ErrorInterceptor} from './helpers/error.interceptor';
 import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
 import {AuthGuard} from './helpers/auth.guard';
 import {Ng5SliderModule} from 'ng5-slider';
+import { CountdownTimerModule } from 'ngx-countdown-timer';
 
 // Components
 import {AppComponent} from './app.component';
@@ -79,7 +80,9 @@ const config: SocketIoConfig = {url: 'http://localhost:8085', options: {}};
     HttpClientModule,
     RouterModule.forRoot(routes),
     Ng5SliderModule,
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    CountdownTimerModule.forRoot(),
+    Ng5SliderModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

@@ -1,13 +1,11 @@
 ﻿export class Product {
-  id: string;
+  name: string;
   owner: string;
   description: string;
   category: string;
-  startValue: number;
   value: number;
-  initial_date: Date;
   end_date: Date;
-  participants: Array<any>;
-  images: Array<string>;
-  main_image: string;
+  main_img: string;
+  last_auction_price?: number;
+  participants?: any;
 }
