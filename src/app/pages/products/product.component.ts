@@ -47,11 +47,19 @@ export class ProductComponent implements OnInit {
 
   resetForm(): void {
     this.filterForm.reset({sliderControl: [0, 0]});
+    // prevent slice on undefined
+    if (!this.unfilteredProducts) {
+      return;
+    }
     this.products = this.unfilteredProducts.slice();
 
   }
 
   filterProducts(): void {
+    // prevent slice on undefined
+    if (!this.unfilteredProducts) {
+      return;
+    }
     this.products = this.unfilteredProducts.slice();
     const minPrice = this.filterForm.value.sliderControl[0];
     const maxPrice = this.filterForm.value.sliderControl[1];
@@ -64,6 +72,10 @@ export class ProductComponent implements OnInit {
   }
 
   filterByCat(category) {
+    // prevent slice on undefined
+    if (!this.unfilteredProducts) {
+      return;
+    }
     this.products = this.unfilteredProducts.slice();
     this.products = this.products.filter((product) => category.toLowerCase() === product.category.toLowerCase());
   }
