@@ -66,6 +66,6 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     // console.log('destroyed');
-    this.bidService.leaveLiveBid.(this.productId);
+    this.bidService.leaveLiveBid(this.productId);
   }
 }
