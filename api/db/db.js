@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
-  DB: 'mongodb://localhost:27017/countdownDB'
+  DB: process.env.MONGODB_URI || 'mongodb://localhost:27017/countdownDB'
 };

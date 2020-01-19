@@ -29,7 +29,9 @@ export class AuthenticationService {
   login(email: string, password: string) {
     return this.http.post<any>(`http://localhost:8085/api/user/login`, {email, password})
       .pipe(map(user => {
-        delete user.userId;
+
+        // Brought this back temporarily, I need to know who the current user is at least throug his Id
+        //delete user.userId;
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);
