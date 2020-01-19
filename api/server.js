@@ -1,8 +1,8 @@
 const express = require('express'),
 
 
-const nodemailer = require("nodemailer");
-const sendMail = require('./mailer')
+nodemailer = require('nodemailer');
+sendMail = require('./mailer')
 path = require('path'),
 bodyParser = require('body-parser'),
 cors = require('cors'),
@@ -11,6 +11,8 @@ config = require('./db/db');
 http = require('http');
 require('dotenv').config();
 const socketIO = require('./helpers/io');
+
+
 
 
 mongoose.Promise = global.Promise;

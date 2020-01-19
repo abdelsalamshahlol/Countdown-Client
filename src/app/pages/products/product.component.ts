@@ -19,7 +19,8 @@ export class ProductComponent implements OnInit {
     private http: HttpClient,
     private router: Router,
     private userService: UserService,
-    private productService: ProductService
+    private productService: ProductService,
+    // private _dashboard: DashboardComponent,
   ) {
   }
 
@@ -105,5 +106,7 @@ export class ProductComponent implements OnInit {
       this.unfilteredProducts = this.products.slice();
     });
   }
+
+
 
 }

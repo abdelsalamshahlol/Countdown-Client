@@ -17,6 +17,7 @@ export class AuthenticationService {
   }
 
   public get currentUserValue(): User {
+    // console.log(this.currentUser)
     return this.currentUserSubject.value;
   }
 
@@ -31,8 +32,9 @@ export class AuthenticationService {
       .pipe(map(user => {
 
         // Brought this back temporarily, I need to know who the current user is at least throug his Id
-        //delete user.userId;
+        // delete user.userId;
         // store user details and jwt token in local storage to keep user logged in between page refreshes
+        
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);
         return user;

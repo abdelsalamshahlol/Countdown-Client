@@ -1,5 +1,5 @@
 <app-add-product></app-add-product>
-<div class="card" *ngIf="isAdmin()">
+<div class="card">
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-shopping text-center">
@@ -9,10 +9,10 @@
                         <th>Product</th>
                         <th class="th-description">description</th>
                         <th class="th-description ">Category</th>
-                        <th >Start Price</th>
+                        <th>Final Price</th>
                     </tr>
                 </thead>
-                <tbody *ngFor="let product of products; index as index">
+                <tbody *ngFor="let product of wonProducts; index as index">
                     <tr>
                         <td >
                             <div class="img-container m-auto">
@@ -22,7 +22,7 @@
                         <td class="td-name w-25">
                             <a>{{ product.name }}</a>
                             <!-- by ? TODO: send userId, get User name form Db display it below -->
-                            <br><small>By: {{ owners[index].firstName }} {{ owners[index].lastName }} </small>
+                            <br><small>By: Me </small>
                         </td>
                         <td class="w-25 ">
                             {{ product.description }}
@@ -31,7 +31,7 @@
                             {{ product.category }}
                         </td>
                         <td class="text-center">
-                            &#x20AC; {{ product.value }}
+                            &#x20AC; {{ product.last_auction_price }}
                         </td>
                         <td class="td-actions">
                             <button type="button" rel="tooltip" class="btn btn-neutral btn-just-icon" (click)='handleDelete(product._id)'>
