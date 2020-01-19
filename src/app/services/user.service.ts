@@ -18,9 +18,8 @@ export class UserService {
         return this.http.get<User>(this.baseurl + id);
     }
 
-    deleteUser(user) {
-        console.log(user._id)
-        return this.http.delete(this.baseurl + 'delete', user._id);
+    deleteUser(_id: string) {
+        return this.http.delete(this.baseurl + 'delete/' + _id);
     }
 
     addUser(user: User){
@@ -28,19 +27,19 @@ export class UserService {
         return this.http.post(this.baseurl + 'signup', user)
     }
 
-    populateFakeDatabase(num: number){
-        console.log("entering populate users")
-        for (var i = 0; i < num; i++){
-            this.fakeUser = {
-                email: "customer"+i+"@gmail.com",
-                password: "password",
-                firstName: faker.name.firstName(),
-                lastName: faker.name.lastName()
-            }
-            this.addUser(this.fakeUser).subscribe( user => {
-                console.log(user)
-            })
-            console.log("added user" + i)
-        }
-    }
+    // populateFakeDatabase(num: number){
+    //     console.log("entering populate users")
+    //     for (var i = 0; i < num; i++){
+    //         this.fakeUser = {
+    //             email: "customer"+i+"@gmail.com",
+    //             password: "password",
+    //             firstName: faker.name.firstName(),
+    //             lastName: faker.name.lastName()
+    //         }
+    //         this.addUser(this.fakeUser).subscribe( user => {
+    //             console.log(user)
+    //         })
+    //         console.log("added user" + i)
+    //     }
+    // }
 }

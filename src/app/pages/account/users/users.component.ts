@@ -20,7 +20,7 @@ export class UsersComponent implements OnInit {
     this.getUsers()
   }
 
-  handleClick(_id: string) {
+  handleDelete(_id: string) {
     // this function receive an id from the form and delete it from the db
     this._userService.deleteUser(_id).subscribe(result => {
       // User deleted if you wanna show something

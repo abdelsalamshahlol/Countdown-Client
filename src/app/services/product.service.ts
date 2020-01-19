@@ -30,7 +30,7 @@ export class ProductService {
   }
 
   deleteProduct(id: string) {
-    return this.http.get(this.baseurl + 'delete/' + id);
+    return this.http.delete(this.baseurl + 'delete/' + id);
   }
 
   updateProduct(auction: Auction, id: string) {

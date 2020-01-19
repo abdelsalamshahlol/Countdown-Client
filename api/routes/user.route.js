@@ -61,7 +61,6 @@ userRoutes.route('/:id').get( (req, res) => {
 });
 
 userRoutes.route('/delete/:id').delete(function (req, res) {
-  console.log(req.params)
   User.findByIdAndRemove({_id: req.params.id}, function(err, user){
       (err) ? res.json(err) : res.json({"msg": 'Successfully removed'});
   });

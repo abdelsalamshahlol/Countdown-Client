@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import {Product} from '../../models/product';
 import { UserService } from '../../services/user.service';
 import {ProductService} from '../../services/product.service';
+// import { DashboardComponent } from '../account/dashboard/dashboard.component'
 
 @Component({
   selector: 'app-product',
@@ -18,7 +19,8 @@ export class ProductComponent implements OnInit {
     private http: HttpClient,
     private router: Router,
     private userService: UserService,
-    private productService: ProductService
+    private productService: ProductService,
+    // private _dashboard: DashboardComponent,
   ) {
   }
 
@@ -74,5 +76,7 @@ export class ProductComponent implements OnInit {
       this.unfilteredProducts = this.products.slice();
     });
   }
+
+
 
 }
