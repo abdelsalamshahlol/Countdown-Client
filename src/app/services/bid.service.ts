@@ -24,8 +24,5 @@ export class BidService {
 
   handleBroadCast() {
     return this.socket.fromEvent('bid:broadcast');
-    // this.socket.on('bid:broadcast', (broadcast) => {
-    //   cb(broadcast);
-    // });
   }
 }

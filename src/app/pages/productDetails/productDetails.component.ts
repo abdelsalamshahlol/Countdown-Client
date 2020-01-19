@@ -41,7 +41,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
 
     // Handle broadcasts
     this.bidService.handleBroadCast().subscribe((result) => {
-      console.log(result.currentValue);
+      // console.log(result.currentValue);
       // @ts-ignore
       this.product.value = result.currentValue;
       this.isDisabled = false;
@@ -51,16 +51,6 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
         console.log('Can\'t play sound');
       });
     });
-    // this.bidService.handleBroadCast((broadcast) => {
-    //   console.log({broadcast, btn: this.isDisabled});
-    //   this.product.value = broadcast.currentValue;
-    //   this.isDisabled = false;
-    //   // Play notification sound
-    //   const alertSound = new Audio('assets/sounds/bid.mp3');
-    //   alertSound.play().catch(err => {
-    //     console.log('Can\'t play sound');
-    //   });
-    // });
   }
 
   bid(value) {
@@ -69,13 +59,13 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
       productId: this.productId,
       token: this.userToken
     };
-    console.log(userBid);
+    // console.log(userBid);
     this.isDisabled = true;
     this.bidService.bidOnProduct(userBid);
   }
 
   ngOnDestroy() {
-    console.log('destroyed');
-    this.bidService.leaveLiveBid(this.productId);
+    // console.log('destroyed');
+    this.bidService.leaveLiveBid.(this.productId);
   }
 }
