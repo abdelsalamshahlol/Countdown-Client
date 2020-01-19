@@ -115,7 +115,7 @@
 <!--            </div>-->
 <!--          </div>-->
 <!--=======-->
-<div class="wrapper container mt-5">
+<div class="wrapper container mt-5" *ngIf="product">
     <div class="row">
         <div class="col-md-5">
 
@@ -154,7 +154,7 @@
 
             <p class="blockquote blockquote-primary">
                 "{{product.description}}"<br><br>
-                <small>{{owner.firstName}} {{owner.lastName}}</small>
+                <small *ngIf="owner">{{owner.firstName}} {{owner.lastName}}</small>
             </p>
             <h2 class="main-price">Auction ends in: <countdown-timer [end]="product.end_date"></countdown-timer></h2>
 
@@ -233,12 +233,12 @@
                     </div>
                 </div>
             </div>
->>>>>>> 0eccd57405b89ab3f6bf975e1b29c6d3a7b0a6b1
+<!--&gt;>>>>>> 0eccd57405b89ab3f6bf975e1b29c6d3a7b0a6b1-->
         </div>
       </div>
     </div>
-  </div>
-</div>
+<!--  </div>-->
+<!--</div>-->
 
 
 <app-footer></app-footer>

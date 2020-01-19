@@ -7,7 +7,7 @@ import {ProductService} from '../../services/product.service';
 import {UserService} from '../../services/user.service';
 import {AuthenticationService} from '../../services/authentication.service';
 import {Auction} from '../../models/auction';
- 
+
 @Component({
   selector: 'app-productDetails',
   templateUrl: './productDetails.component.html',
@@ -57,7 +57,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     this.productService.getProductById(this.productId).subscribe(product => {
       this.product = product;
       this.participantsList = product.participants;
-      console.log(this.participantsList);
+      // console.log(this.participantsList);
 
       this.userService.getUserById(this.product.owner).subscribe(owner => {
         this.owner = owner;

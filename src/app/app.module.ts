@@ -12,7 +12,7 @@ import {ErrorInterceptor} from './helpers/error.interceptor';
 import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
 import {AuthGuard} from './helpers/auth.guard';
 import {Ng5SliderModule} from 'ng5-slider';
-import { CountdownTimerModule } from 'ngx-countdown-timer';
+import {CountdownTimerModule} from 'ngx-countdown-timer';
 
 // Components
 import {AppComponent} from './app.component';
