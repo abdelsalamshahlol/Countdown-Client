@@ -11,6 +11,7 @@ import { AuthenticationService } from 'src/app/services';
   , animations: [fader]
 })
 export class DashboardComponent implements OnInit {
+  isAdmin: boolean = false;
 
   constructor(
     private router: Router,
@@ -19,6 +20,11 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isAdmin = this.authenticationService.currentUserValue.isAdmin
+  }
+
+  public getAdmin() {
+    return this.isAdmin
   }
 
   prepareRoute(outlet: RouterOutlet) {
