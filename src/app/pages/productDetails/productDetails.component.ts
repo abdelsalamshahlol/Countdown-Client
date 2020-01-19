@@ -34,6 +34,7 @@ export class ProductDetailsComponent implements OnInit {
         userId: this.authenticationService.currentUserValue.userId
       }
       this.productService.updateProduct(this.auction, this.productId).subscribe(newAuction => {
+        console.log(newAuction)
         this.product.last_auction_price = newAuction.product.last_auction_price;
         this.product.participants = newAuction.product.participants
         this.participantsList = newAuction.product.participants

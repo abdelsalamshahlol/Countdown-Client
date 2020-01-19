@@ -15,9 +15,6 @@ export class ProductService {
     private userService: UserService
   ) { }
 
-  constructor(private http: HttpClient) {
-  }
-
   baseurl: string = "http://localhost:8085/api/products/";
 
   getAllProducts() {
