@@ -54,6 +54,7 @@ userRoutes.route('/getAll').get( (req, res) => {
 });
 
 userRoutes.route('/:id').get( (req, res) => {
+  console.log(req.params)
   let id = req.params.id;
   User.findById(id, (err, user) => {
       res.json(user);

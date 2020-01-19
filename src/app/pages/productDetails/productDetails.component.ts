@@ -35,10 +35,10 @@ export class ProductDetailsComponent implements OnInit {
       }
       this.productService.updateProduct(this.auction, this.productId).subscribe(newAuction => {
         console.log(newAuction)
-        this.product.last_auction_price = newAuction.product.last_auction_price;
-        this.product.participants = newAuction.product.participants
-        this.participantsList = newAuction.product.participants
-        console.log(this.product.participants)
+        // this.product.last_auction_price = newAuction.product.last_auction_price;
+        // this.product.participants = newAuction.product.participants
+        // this.participantsList = newAuction.product.participants
+        // console.log(this.product.participants)
       })
     } else {
       // handle the amount lower than our amount

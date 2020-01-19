@@ -35,6 +35,8 @@ import {ContactComponent} from './pages/contact/contact.component';
 
 import {AuthGuard} from './helpers/auth.guard';
 import { UsersComponent } from './pages/account/users/users.component';
+import { UserproductsComponent } from './pages/userproducts/userproducts.component';
+import { WonproductsComponent } from './pages/wonproducts/wonproducts.component';
 
 // Routes array
 const routes: Routes = [
@@ -44,7 +46,13 @@ const routes: Routes = [
     path: 'account', component: DashboardComponent,
     children: [
       {path: '', component: HomeComponent},
-      {path: 'product', component: ProductUserComponent},
+      {path: 'product', 
+        children: [
+          {path: '', component: ProductUserComponent},
+          {path: 'allproducts', component: UserproductsComponent},
+          {path: 'wonproducts', component: WonproductsComponent},
+        ]
+      },
       {path: 'users', component: UsersComponent}
     ], canActivate: [AuthGuard]
   },
@@ -75,7 +83,9 @@ declare var $: any;
     ProductDetailsComponent,
     ContactComponent,
     FileSelectDirective,
-    UsersComponent
+    UsersComponent,
+    UserproductsComponent,
+    WonproductsComponent
   ],
   imports: [
     BrowserModule,
