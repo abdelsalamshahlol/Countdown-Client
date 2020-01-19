@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {RouterOutlet} from '@angular/router';
+import {RouterOutlet, Router} from '@angular/router';
 import {fader} from '../../../helpers/route-animations';
+import { AuthenticationService } from 'src/app/services';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,7 +12,10 @@ import {fader} from '../../../helpers/route-animations';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() {
+  constructor(
+    private router: Router,
+    private authenticationService: AuthenticationService
+  ) {
   }
 
   ngOnInit() {
@@ -20,4 +24,11 @@ export class DashboardComponent implements OnInit {
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
+
+  logout() {
+    this.authenticationService.logout();
+    this.router.navigate(['/login']);
+  }
+
+  
 }

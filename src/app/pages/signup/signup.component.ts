@@ -54,7 +54,7 @@ export class SignupComponent implements OnInit {
           console.log(data)
           if ( data.registered ) {
             // TODO: redirect user!
-            // this.router.navigate(['/login'])
+            this.router.navigate(['/login'])
           }
         },
         error: error => this.exist = true
