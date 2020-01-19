@@ -112,11 +112,11 @@
               <div class="card card-background" [ngStyle]="{ 'background-image': 'url(' + product.main_img + ')'}"
                    style="background-size: cover; margin-bottom: 0;">
                 <div class="myfooter">
-                  <div class="card-footer text-left">
+                  <div id="test" class="card-footer text-left" (click)="updateWinner()">
                     <div class="stats">
                       <h4>{{product.last_auction_price}} TND</h4>
                       <!-- add  (zeroTrigger)="someFunction()" below to triger a function on zero-->
-                      <countdown-timer style="font-size:30px;color:white;"  [end]="product.end_date"></countdown-timer>
+                      <countdown-timer (zeroTrigger)="updateWinner(product._id)" style="font-size:30px;color:white;"  [end]="product.end_date"></countdown-timer>
                     </div>
                   </div>
                 </div>

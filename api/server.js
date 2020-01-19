@@ -4,7 +4,9 @@ bodyParser = require('body-parser'),
 cors = require('cors'),
 mongoose = require('mongoose'),
 config = require('./db/db');
-require('dotenv').config()
+require('dotenv').config();
+const nodemailer = require("nodemailer");
+const sendMail = require('./mailer')
 
 mongoose.Promise = global.Promise;
 
@@ -29,4 +31,19 @@ const port = process.env.PORT || 8085;
 
 app.listen(port, function() {
   console.log(`listening on http://localhost:${port}`);
+});
+
+app.post("/sendmail", (req, res) => {
+  console.log("request came");
+  let data = req.body
+  sendMail(data, (err, info) => {
+    if (err) {
+      console.log(err);
+      res.status(400);
+      res.send({ error: "Failed to send email" });
+    } else {
+      console.log("Email has been sent");
+      res.send(info);
+    }
+  });
 });

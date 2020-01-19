@@ -26,6 +26,10 @@ const productSchema = new mongoose.Schema({
     default: Date.now
   },
   end_date: { type: Date },
+  winner: { 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: "User" 
+  },
   participants: [
     {
       user: { 

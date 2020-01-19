@@ -44,8 +44,6 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
 
-
-
   ngOnInit() {
     this.productId = this.activatedRoute.snapshot.params.id
 
