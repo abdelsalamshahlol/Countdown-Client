@@ -4,19 +4,17 @@ import {Routes, RouterModule} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-import { FileSelectDirective } from 'ng2-file-upload';
-
+import {SocketIoModule, SocketIoConfig} from 'ngx-socket-io';
 
 // Helpers
 import {JwtInterceptor} from './helpers/jwt.interceptor';
 import {ErrorInterceptor} from './helpers/error.interceptor';
-
 import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
+import {AuthGuard} from './helpers/auth.guard';
 import {Ng5SliderModule} from 'ng5-slider';
-import { CountdownTimerModule } from 'ngx-countdown-timer';
+import {CountdownTimerModule} from 'ngx-countdown-timer';
 
 // Components
-
 import {AppComponent} from './app.component';
 import {IndexComponent} from './pages/home/index.component';
 import {ProductComponent} from './pages/products/product.component';
@@ -62,8 +60,9 @@ const routes: Routes = [
   {path: 'contact', component: ContactComponent}
 ];
 
-// Testing jQuery
 declare var $: any;
+
+const config: SocketIoConfig = {url: 'http://localhost:8085', options: {}};
 
 @NgModule({
   declarations: [
@@ -82,7 +81,6 @@ declare var $: any;
     AddProductComponent,
     ProductDetailsComponent,
     ContactComponent,
-    FileSelectDirective,
     UsersComponent,
     UserproductsComponent,
     WonproductsComponent
@@ -96,6 +94,8 @@ declare var $: any;
     OwlNativeDateTimeModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
+    Ng5SliderModule,
+    SocketIoModule.forRoot(config),
     CountdownTimerModule.forRoot(),
     Ng5SliderModule
   ],

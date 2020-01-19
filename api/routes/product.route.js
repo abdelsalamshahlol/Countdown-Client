@@ -96,8 +96,35 @@ productRoutes.route('/getByCategory/:category').get( (req, res) => {
 
 productRoutes.route('/getByUser/:userId').get( (req, res) => {
   var userId = req.params.userId
-  Product.find({end_date: { $gte: new Date() }, owner: userId}, (err, products) => {
+  Product.find({owner: userId}, (err, products) => {
     (err) ? console.log(err) : res.json(products)
+  });
+});
+
+productRoutes.route('/getByWinner/:userId').get( (req, res) => {
+  var userId = req.params.userId
+  Product.find({winner: userId}, (err, products) => {
+    (err) ? console.log(err) : res.json(products)
+  });
+});
+
+productRoutes.route('/updateWinner/:id').put( (req, res) => {
+  Product.updateOne(
+    {_id: req.params.id},
+    {
+      $set: { 
+        winner: req.body.winner._id
+      }
+    },
+    {new: true, upset: true}
+  )
+  .populate("winner")
+  .exec((err, product) => {
+    if (err) {
+      res.status(400).json({msg: "cant get winner"});
+    } else {
+      res.status(200).json({product, msg: 'we have a winner'});
+    }
   });
 });
 

@@ -6,7 +6,7 @@ import {Router} from '@angular/router';
 import {Product} from '../../models/product';
 import { UserService } from '../../services/user.service';
 import {ProductService} from '../../services/product.service';
-// import { DashboardComponent } from '../account/dashboard/dashboard.component'
+import { User } from 'src/app/models';
 
 @Component({
   selector: 'app-product',
@@ -14,7 +14,7 @@ import {ProductService} from '../../services/product.service';
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
-
+  winner: User;
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -49,11 +49,37 @@ export class ProductComponent implements OnInit {
 
   resetForm(): void {
     this.filterForm.reset({sliderControl: [0, 0]});
+    // prevent slice on undefined
+    if (!this.unfilteredProducts) {
+      return;
+    }
     this.products = this.unfilteredProducts.slice();
 
   }
 
+  updateWinner(productId) {
+    this.productService.getProductById(productId).subscribe(product => {
+      if (!product.winner){
+        this.productService.getWinner(productId).subscribe(winner => {
+          this.productService.updateWinner(productId, winner).subscribe(() => {
+            this.productService.sendMail(winner.firstName,winner.email).subscribe(()=> {
+              console.log("mail sent")
+            })
+          })
+        });
+      }
+    })
+
+    // send mail to the winner
+    // add product to the winner
+    
+  }
+
   filterProducts(): void {
+    // prevent slice on undefined
+    if (!this.unfilteredProducts) {
+      return;
+    }
     this.products = this.unfilteredProducts.slice();
     const minPrice = this.filterForm.value.sliderControl[0];
     const maxPrice = this.filterForm.value.sliderControl[1];
@@ -66,6 +92,10 @@ export class ProductComponent implements OnInit {
   }
 
   filterByCat(category) {
+    // prevent slice on undefined
+    if (!this.unfilteredProducts) {
+      return;
+    }
     this.products = this.unfilteredProducts.slice();
     this.products = this.products.filter((product) => category.toLowerCase() === product.category.toLowerCase());
   }

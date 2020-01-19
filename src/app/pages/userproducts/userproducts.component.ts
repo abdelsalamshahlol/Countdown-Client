@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services';
+import { ProductService } from '../../services/product.service'
 
 @Component({
   selector: 'app-userproducts',
@@ -8,13 +9,22 @@ import { AuthenticationService } from 'src/app/services';
 })
 export class UserproductsComponent implements OnInit {
 
-  currentUser: any = [];
+  userProducts: any = [];
+
   constructor(
-    private authenticationService: AuthenticationService
+    private _authenticationService: AuthenticationService,
+    private _productService: ProductService
+
   ) { }
 
   ngOnInit() {
-    console.log(this.authenticationService.currentUserValue)
+    let userId = this._authenticationService.currentUserValue.userId
+    this._productService.getProductsByUserId(userId)
+      .subscribe(products => {
+        console.log(products)
+        this.userProducts = products
+      })
+    // console.log(this.authenticationService.currentUserValue)
   }
 
 }
