@@ -41,6 +41,16 @@ export class ProductService {
     return this.http.get<User>(this.baseurl + 'getwinner/' + id);
   }
 
+  updateWinner(productId: string, winner: User) {    
+    return this.http.put(this.baseurl + 'updateWinner/' + productId , {winner})
+  }
+
+  sendMail(username: string, email: string) {
+    console.log(username)
+    console.log(email)
+    return this.http.post("http://localhost:8085/sendmail", {username, email})
+  }
+
   getProductsByCategory(category: string) {
     return this.http.get<Product[]>(this.baseurl + 'getByCategory/' + category.toLowerCase());
   }
@@ -53,8 +63,8 @@ export class ProductService {
     this.userService.getAllUsers().subscribe(users => {
       console.log("Entering populate products")
       let memory="";
-      for (let day = 19; day < 21; day++) {
-          for (let hour = 0 ; hour < 24; hour++){
+      for (let day = 19; day < 20; day++) {
+          for (let hour =  5; hour < 8; hour++){
 
           fetch("https://source.unsplash.com/1600x900/?product").then(img => {
             if (img.url !== memory){
