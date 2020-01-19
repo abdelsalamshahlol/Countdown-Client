@@ -18,6 +18,11 @@ export class UserService {
         return this.http.get<User>(this.baseurl + id);
     }
 
+    deleteUser(user) {
+        console.log(user._id)
+        return this.http.delete(this.baseurl + 'delete', user._id);
+    }
+
     addUser(user: User){
         console.log("adding user")
         return this.http.post(this.baseurl + 'signup', user)

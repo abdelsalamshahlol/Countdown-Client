@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DashboardComponent } from '../../../pages/account/dashboard/dashboard.component'
 
 @Component({
   selector: 'app-admin-sidebar',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _dashboard: DashboardComponent,
+  ) { }
+  
+
+  isAdmin() {
+    return this._dashboard.isAdmin;
+  }
 
   ngOnInit() {
+    console.log(this.isAdmin())
+    // console.log(this._dashboard)
   }
 
 }

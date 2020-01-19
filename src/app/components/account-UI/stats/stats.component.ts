@@ -1,4 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
+import { DashboardComponent } from '../../../pages/account/dashboard/dashboard.component'
 
 @Component({
   selector: 'app-stats',
@@ -11,7 +12,12 @@ export class StatsComponent implements OnInit {
   @Input() productsBought = 0;
   @Input() auctionsEntered = 0;
 
-  constructor() {
+  constructor(
+    private _dashboard: DashboardComponent,
+  ) { }
+
+  isAdmin() {
+    return this._dashboard.isAdmin;
   }
 
   ngOnInit() {
