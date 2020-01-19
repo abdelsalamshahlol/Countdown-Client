@@ -33,23 +33,32 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   ) {
   }
 
-  // bid(amount) {
-  //   // console.log('bidding');
-  //   if (amount > this.product.last_auction_price) {
-  //     this.auction = {
-  //       last_auction_price: amount,
-  //       userId: this.authenticationService.currentUserValue.userId
-  //     }
-  //     this.productService.updateProduct(this.auction, this.productId).subscribe(newAuction => {
-  //       this.product.last_auction_price = newAuction.product.last_auction_price;
-  //       this.product.participants = newAuction.product.participants
-  //       this.participantsList = newAuction.product.participants
-  //       console.log(this.product.participants)
-  //     })
-  //   } else {
-  //     // handle the amount lower than our amount
-  //   }
-  // }
+  bid(amount) {
+    // console.log('bidding');
+    if (amount > this.product.last_auction_price) {
+      // this.auction = {
+      //   last_auction_price: amount,
+      //   userId: this.authenticationService.currentUserValue.userId
+      // }
+
+      const userBid = {
+        last_auction_price: amount,
+        productId: this.productId,
+        userToken: this.userToken
+      };
+      // console.log(userBid);
+      // this.isDisabled = true;
+      this.bidService.bidOnProduct(userBid);
+      // this.productService.updateProduct(this.auction, this.productId).subscribe(newAuction => {
+      //   this.product.last_auction_price = newAuction.product.last_auction_price;
+      //   this.product.participants = newAuction.product.participants;
+      //   this.participantsList = newAuction.product.participants;
+      //   console.log(this.product.participants);
+      // });
+    } else {
+      // handle the amount lower than our amount
+    }
+  }
 
 
   ngOnInit() {
@@ -57,6 +66,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     this.productService.getProductById(this.productId).subscribe(product => {
       this.product = product;
       this.participantsList = product.participants;
+      console.log({product});
       // console.log(this.participantsList);
 
       this.userService.getUserById(this.product.owner).subscribe(owner => {
@@ -76,9 +86,18 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     // Handle broadcasts
     this.bidService.handleBroadCast().subscribe((result) => {
       // console.log(result.currentValue);
+      console.log({result});
       // @ts-ignore
-      this.product.value = result.currentValue;
+      // this.product.value = result.currentValue;
       this.isDisabled = false;
+
+      // @ts-ignore
+      this.product.last_auction_price = result.product.last_auction_price;
+      // @ts-ignore
+      this.product.participants = result.product.participants;
+      // @ts-ignore
+      this.participantsList = result.product.participants;
+
       // Play notification sound
       const alertSound = new Audio('assets/sounds/bid.mp3');
       alertSound.play().catch(err => {
@@ -87,16 +106,16 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     });
   }
 
-  bid(value) {
-    const userBid = {
-      value,
-      productId: this.productId,
-      token: this.userToken
-    };
-    // console.log(userBid);
-    this.isDisabled = true;
-    this.bidService.bidOnProduct(userBid);
-  }
+  // bid(value) {
+  // const userBid = {
+  //   value,
+  //   productId: this.productId,
+  //   token: this.userToken
+  // };
+  // // console.log(userBid);
+  // this.isDisabled = true;
+  // this.bidService.bidOnProduct(userBid);
+  // }
 
   ngOnDestroy() {
     // console.log('destroyed');
