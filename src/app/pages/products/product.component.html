@@ -83,21 +83,66 @@
             <div class="col-12">
               <ul class="nav nav-pills nav-pills-info nav-pills-icons flex-column" role="tablist">
                 <li class="nav-item m-0 p-0">
-                  <a class="nav-link bg-primary mb-0" data-toggle="tab" href="#" role="tablist" (click)="filterByCat('tourism')">
+                  <a class="nav-link bg-primary mb-0" data-toggle="tab" href="#" role="tablist"
+                     (click)="filterByCat('tourism')">
                     <i class=" fas fa-shuttle-van text-primary"></i>
-                  Tourism
+                    Tourism
                   </a>
                 </li>
                 <li class="nav-item m-0 p-0">
-                  <a class="nav-link bg-primary mb-0" data-toggle="tab" href="#" role="tablist" (click)="filterByCat('technology')">
+                  <a class="nav-link bg-primary mb-0" data-toggle="tab" href="#" role="tablist"
+                     (click)="filterByCat('technology')">
                     <i class=" fas fa-microchip"></i>
-                  Technology
+                    Technology
                   </a>
                 </li>
                 <li class="nav-item m-0 p-0">
-                  <a class="nav-link bg-primary mb-0" data-toggle="tab" href="#" role="tablist" (click)="filterByCat('arts')">
+                  <a class="nav-link bg-primary mb-0" data-toggle="tab" href="#" role="tablist"
+                     (click)="filterByCat('arts')">
                     <i class=" fas fa-palette text-primary"></i>
-                  Arts
+                    Arts
+                  </a>
+                </li>
+                <li class="nav-item m-0 p-0">
+                  <a class="nav-link bg-primary mb-0" data-toggle="tab" href="#" role="tablist"
+                     (click)="filterByCat('home')">
+                    <i class=" fas fa-home text-primary"></i>
+                    Home
+                  </a>
+                </li>
+                <li class="nav-item m-0 p-0">
+                  <a class="nav-link bg-primary mb-0" data-toggle="tab" href="#" role="tablist"
+                     (click)="filterByCat('games')">
+                    <i class=" fas fa-gamepad text-primary"></i>
+                    Games
+                  </a>
+                </li>
+                <li class="nav-item m-0 p-0">
+                  <a class="nav-link bg-primary mb-0" data-toggle="tab" href="#" role="tablist"
+                     (click)="filterByCat('appliances')">
+                    <i class=" fas fa-blender-phone text-primary"></i>
+                    Appliances
+                  </a>
+                </li>
+                <li class="nav-item m-0 p-0">
+                  <a class="nav-link bg-primary mb-0" data-toggle="tab" href="#" role="tablist"
+                     (click)="filterByCat('cars')">
+                    <i class=" fas fa-car text-primary"></i>
+                    Cars
+                  </a>
+                </li>
+                <li class="nav-item m-0 p-0">
+                  <a class="nav-link bg-primary mb-0" data-toggle="tab" href="#" role="tablist"
+                     (click)="filterByCat('education')">
+                    <i class=" fas fa-book text-primary"></i>
+                    Education
+                  </a>
+                </li>
+                <li class="nav-item m-0 p-0">
+                  <a class="nav-link bg-primary mb-0" data-toggle="tab" href="#" role="tablist"
+                     (click)="filterByCat('sport')">
+                    <i class=" fas fa-volleyball-ball text-primary"></i>
+                    Sport
                   </a>
                 </li>
               </ul>
@@ -116,7 +161,7 @@
                     <div class="stats">
                       <h4>{{product.last_auction_price}} TND</h4>
                       <!-- add  (zeroTrigger)="someFunction()" below to triger a function on zero-->
-                      <countdown-timer style="font-size:30px;color:white;"  [end]="product.end_date"></countdown-timer>
+                      <countdown-timer style="font-size:30px;color:white;" [end]="product.end_date"></countdown-timer>
                     </div>
                   </div>
                 </div>
@@ -127,7 +172,8 @@
                   <div class="content-center">
                     <p>Value:</p>
                     <h6>{{product.value}} TND</h6>
-                  </div>                </div>
+                  </div>
+                </div>
                 <p class="card-text">{{product.description}}</p>
                 <hr>
                 <div class="buttons-div">
