@@ -109,22 +109,25 @@
         <div class="row">
           <div class="col-md-4" *ngFor="let product of products">
             <div class="card main-card">
-              <div class="card card-background" [ngStyle]="{ 'background-image': 'url(' + product.main_image + ')'}"
+              <div class="card card-background" [ngStyle]="{ 'background-image': 'url(' + product.main_img + ')'}"
                    style="background-size: cover; margin-bottom: 0;">
                 <div class="myfooter">
                   <div class="card-footer text-left">
                     <div class="stats">
                       <h4>{{product.last_auction_price}} TND</h4>
-                      <span>{{product.end_date}}</span>
+                      <!-- add  (zeroTrigger)="someFunction()" below to triger a function on zero-->
+                      <countdown-timer style="font-size:30px;color:white;"  [end]="product.end_date"></countdown-timer>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="card-body">
                 <div class="stats" style="padding: 0px;">
-                  <h4 class="card-title">{{product.name}}</h4>
-                  <h5>Value: {{product.value}} TND</h5>
-                </div>
+                  <h4 class="card-title" style="align-self: center;">{{product.name}}</h4>
+                  <div class="content-center">
+                    <p>Value:</p>
+                    <h6>{{product.value}} TND</h6>
+                  </div>                </div>
                 <p class="card-text">{{product.description}}</p>
                 <hr>
                 <div class="buttons-div">

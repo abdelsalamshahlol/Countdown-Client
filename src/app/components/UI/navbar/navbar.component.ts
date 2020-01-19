@@ -2,6 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../../services';
 
+//temporary
+import { ProductService } from '../../../services/product.service';
+
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -15,6 +19,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private productService: ProductService,
     private authenticationService: AuthenticationService
   ) {
   }
@@ -24,7 +29,13 @@ export class NavbarComponent implements OnInit {
     console.log(this.isLoggedIn);
   }
 
-
+  //temporary
+  addProducts(){
+    this.productService.getAllProducts().subscribe(async products => {
+      await this.productService.populateFakeDatabase();
+      console.log("done adding products")
+    })
+  }
 
   logout() {
     this.authenticationService.logout();
