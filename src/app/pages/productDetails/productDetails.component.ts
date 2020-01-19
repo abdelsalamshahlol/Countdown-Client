@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import {Product} from '../../models/product';
@@ -11,11 +11,11 @@ import {AuthenticationService} from '../../services/authentication.service.js';
   templateUrl: './productDetails.component.html',
   styleUrls: ['./productDetails.component.scss']
 })
-export class ProductDetailsComponent implements OnInit {
+export class ProductDetailsComponent implements OnInit, OnDestroy {
   product: Product;
   productId: string;
   private userToken;
-  isDisabled: boolean = false;
+  isDisabled = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -40,9 +40,10 @@ export class ProductDetailsComponent implements OnInit {
     });
 
     // Handle broadcasts
-    this.bidService.handleBroadCast((broadcast) => {
-      console.log({broadcast, btn: this.isDisabled});
-      this.product.value = broadcast.currentValue;
+    this.bidService.handleBroadCast().subscribe((result) => {
+      console.log(result.currentValue);
+      // @ts-ignore
+      this.product.value = result.currentValue;
       this.isDisabled = false;
       // Play notification sound
       const alertSound = new Audio('assets/sounds/bid.mp3');
@@ -50,6 +51,16 @@ export class ProductDetailsComponent implements OnInit {
         console.log('Can\'t play sound');
       });
     });
+    // this.bidService.handleBroadCast((broadcast) => {
+    //   console.log({broadcast, btn: this.isDisabled});
+    //   this.product.value = broadcast.currentValue;
+    //   this.isDisabled = false;
+    //   // Play notification sound
+    //   const alertSound = new Audio('assets/sounds/bid.mp3');
+    //   alertSound.play().catch(err => {
+    //     console.log('Can\'t play sound');
+    //   });
+    // });
   }
 
   bid(value) {
@@ -58,11 +69,13 @@ export class ProductDetailsComponent implements OnInit {
       productId: this.productId,
       token: this.userToken
     };
+    console.log(userBid);
     this.isDisabled = true;
     this.bidService.bidOnProduct(userBid);
   }
 
-  updateValue(value) {
-    this.product.value = value;
+  ngOnDestroy() {
+    console.log('destroyed');
+    this.bidService.leaveLiveBid(this.productId);
   }
 }

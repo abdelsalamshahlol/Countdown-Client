@@ -14,13 +14,18 @@ export class BidService {
     this.socket.emit('join', productId);
   }
 
+  leaveLiveBid(productId) {
+    this.socket.emit('leave', productId);
+  }
+
   bidOnProduct(bidObj) {
     this.socket.emit('bid', bidObj);
   }
 
-  handleBroadCast(cb) {
-    this.socket.on('bid:broadcast', (broadcast) => {
-      cb(broadcast);
-    });
+  handleBroadCast() {
+    return this.socket.fromEvent('bid:broadcast');
+    // this.socket.on('bid:broadcast', (broadcast) => {
+    //   cb(broadcast);
+    // });
   }
 }
