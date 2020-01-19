@@ -47,29 +47,12 @@ function init(serverIO) {
               msg: 'Sorry we encountered an error handling your request',
             });
           } else {
-            console.log({bid, product});
             serverIO.in(bid.productId).emit('bid:broadcast', {
               msg: 'Someone made a bid',
               product
             });
           }
         });
-      // let currentValue = 0;
-      // productModel.findById(bid.productId)
-      //   .then(result => {
-      // let startingValue = result.value > 0 ? result.value : result.startValue;
-      // currentValue = bid.value + startingValue;
-      // result.value = currentValue;
-      // result.save(() => {
-      //   serverIO.in(bid.productId).emit('bid:broadcast', {
-      //     msg: 'Someone made a bid',
-      //     currentValue: result.value
-      //   });
-      // });
-      // })
-      //   .catch(err => {
-      //     console.log({err})
-      //   });
     });
   });
 }
