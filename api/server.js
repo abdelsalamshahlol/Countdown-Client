@@ -13,7 +13,7 @@ const productRoute = require('./routes/product.route');
 
 mongoose.connect(config.DB, { useNewUrlParser: true , useUnifiedTopology: true})
 .then(
-  () => {console.log('Database is connected') },
+  () => {console.log(`Database is connected on ${config.DB}`) },
   err => { console.log('Can not connect to the database'+ err)}
 );
 
@@ -23,7 +23,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 app.use('/api/user', userRoute);
-app.use('/api/product', productRoute);
+app.use('/api/products', productRoute);
 
 const port = process.env.PORT || 8085;
 

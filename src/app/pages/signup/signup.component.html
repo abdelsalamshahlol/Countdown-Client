@@ -1,17 +1,11 @@
-<app-navbar></app-navbar>
+<app-navbar [isTransparent]='false' [isFixed]='false'></app-navbar>
 <div class="wrapper">
     <div class="content">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 ml-auto mr-auto" style="margin-top: 60px;">
-                    <div class="info info-horizontal pb-5">
-                        <div class="logo-container">
-                            <img src="../../../assets/img/logos/logo-multi.png" alt="">
-                            <!-- Choose one, don't worry about the passig-->
-                            <img src="../../../assets/img/logos/logo2.png" alt="">
-                        </div>
-                    </div>
-                    <div class="info info-horizontal pt-5">
+                    
+                    <div class="info info-horizontal" style="visibility: hidden;">
                         <div class="icon icon-primary"><i class="now-ui-icons media-1_button-pause"></i></div>
                         <div class="description">
                             <h5 class="info-title">Fully Coded in HTML5</h5>
@@ -19,12 +13,21 @@
                                 access to the code using GitHub. </p>
                         </div>
                     </div>
-                    <div class="info info-horizontal pt-5">
-                        <div class="icon icon-info"><i class="now-ui-icons users_single-02"></i></div>
-                        <div class="description">
-                            <h5 class="info-title">Built Audience</h5>
-                            <p class="description"> There is also a Fully Customizable CMS Admin Dashboard for this
-                                product. </p>
+
+                    <div class="info info-horizontal" style="padding-bottom: 60px">
+                        <div class="logo-container">
+                            <img src="../../../assets/img/logos/logo-multi.png" alt="">
+                            <!-- Choose one, don't worry about the passig-->
+                            <img style="visibility: hidden;" src="../../../assets/img/logos/logo2.png" alt="">
+                        </div>
+                    </div>
+
+                    <div class="info info-horizontal" style="visibility: hidden;">
+                        <div>
+                            a
+                            <div>
+                            a                                
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -98,8 +101,8 @@
                                             href="#something">conditions</a>. </label>
                                 </div>
 
-                                <div class="card-footer text-center"><button class="btn btn-primary btn-round btn-lg"
-                                        href="#pablo">Signup</button></div>
+                                <div class="card-footer text-center"><button class="btn btn-primary btn-round btn-lg" href="#pablo">Signup</button>
+                                </div>
 
                             </form>
                         </div>
@@ -119,3 +122,4 @@
         </div>
     </div>
 </div>
+<app-footer [isFixed]='true'></app-footer>

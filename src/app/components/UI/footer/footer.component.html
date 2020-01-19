@@ -1,21 +1,21 @@
-<footer class="footer">
+<footer class="footer" [ngClass]="{'fixed-bottom': isFixed}">
 
   <div class=" container ">
     <nav>
       <ul>
         <li>
-          <a href="https://www.creative-tim.com/">
-            Creative Tim
+          <a routerLink="/">
+            Home
           </a>
         </li>
         <li>
-          <a href="http://presentation.creative-tim.com/">
-            About Us
+          <a routerLink="/products">
+            Products
           </a>
         </li>
         <li>
-          <a href="http://blog.creative-tim.com/">
-            Blog
+          <a routerLink="/contact">
+            Contact
           </a>
         </li>
       </ul>
@@ -23,8 +23,7 @@
     <div class="copyright" id="copyright">
       ©
       <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
-      2020, Designed by <a href="https://www.invisionapp.com/" target="_blank">Invision</a>. Coded by <a
-      href="https://www.creative-tim.com/" target="_blank">Creative Tim</a>.
+      2020, Designed by <a href="https://github.com/count-down-rbk" target="_blank">CountDown Team</a>.
     </div>
   </div>
 </footer>

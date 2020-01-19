@@ -8,7 +8,7 @@ productRoutes.route('/add').post( (req, res) => {
   let product = new Product(req.body);
   product.save()
   .then(product => {
-    res.status(200).json({msg: 'product added successfully'});
+    res.status(200).json({msg: 'products added successfully'});
   })
   .catch(err => {
     res.status(400).json({msg: "unable to save to database"});
@@ -23,9 +23,16 @@ productRoutes.route('/getAll').get( (req, res) => {
 
 productRoutes.route('/:id').get( (req, res) => {
   let id = req.params.id;
-  Product.findById(id, (err, product) => {
-    res.json(product);
+  Product.findById(id)
+  .populate("participants.user")
+  .exec((err, product) => {
+    if (err) {
+      res.status(400).json({msg: "cant update the database"});
+    } else {
+      res.json(product);
+    }
   });
+
 });
 
 productRoutes.route('/delete/:id').get( (req, res) => {
@@ -35,6 +42,7 @@ productRoutes.route('/delete/:id').get( (req, res) => {
 });
 
 productRoutes.route('/update/:id').put( (req, res) => {
+  console.log("updating product" + req.params.id + " by the value " + req.body.userId)
   Product.findByIdAndUpdate(
     {_id: req.params.id},
     {
