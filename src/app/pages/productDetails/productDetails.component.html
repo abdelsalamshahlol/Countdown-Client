@@ -1,120 +1,5 @@
 <app-navbar [isFixed]="false" [isTransparent]="false" [detachOnScroll]="5000"></app-navbar>
 <!--Note that the wrapper is mandatory by the UI kit to render properly-->
-<!--<<<<<<< HEAD-->
-<!--<div class="wrapper container mt-5" *ngIf="product">-->
-<!--  <div class="row">-->
-<!--    <div class="col-md-5">-->
-<!--      <div id="productCarousel" class="carousel slide" data-ride="carousel" data-interval="8000">-->
-<!--        <ol class="carousel-indicators">-->
-<!--          <li data-target="#productCarousel" *ngFor="let image of product['images']; index as i"-->
-<!--              [attr.data-slide-to]="i" [ngClass]="{'active': i === 0}">-->
-<!--          </li>-->
-<!--        </ol>-->
-<!--        <div class="carousel-inner" role="listbox">-->
-<!--          <div class="carousel-item" *ngFor="let image of product['images']; index as i"-->
-<!--               [ngClass]="{'active': i === 0}">-->
-<!--            <img class="d-block img-raised" src={{image}} alt="First slide">-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <a class="carousel-control-prev" href="#productCarousel" role="button" data-slide="prev">-->
-<!--          <button type="button" class="btn btn-primary btn-icon btn-round btn-sm" name="button">-->
-<!--            <i class="now-ui-icons arrows-1_minimal-left"></i>-->
-<!--          </button>-->
-<!--        </a>-->
-<!--        <a class="carousel-control-next" href="#productCarousel" role="button" data-slide="next">-->
-<!--          <button type="button" class="btn btn-primary btn-icon btn-round btn-sm" name="button">-->
-<!--            <i class="now-ui-icons arrows-1_minimal-right"></i>-->
-<!--          </button>-->
-<!--        </a>-->
-<!--      </div>-->
-
-<!--      <div class="blockquote">-->
-<!--        <span class="text-primary">Advert by:</span>-->
-<!--        <p>Username</p>-->
-<!--        <small>Owner of the product here</small>-->
-<!--      </div>-->
-<!--      <div class="row">-->
-<!--        <div class="col">-->
-<!--          <h5 class="title">Make a bid</h5>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="row">-->
-<!--        <div class="col">-->
-<!--          <button class="btn btn-outline-primary mt-4" [disabled]="isDisabled" (click)="bid(5)">5 <i-->
-<!--            class="fas fa-dollar-sign"></i></button>-->
-<!--          <button class="btn btn-outline-primary mt-4 ml-2" [disabled]="isDisabled" (click)="bid(10)">10-->
-<!--            <i class="fas fa-dollar-sign"></i>-->
-<!--          </button>-->
-<!--          <button class="btn btn-outline-primary mt-4 ml-2" [disabled]="isDisabled" (click)="bid(15)">15-->
-<!--            <i class="fas fa-dollar-sign"></i>-->
-<!--          </button>-->
-<!--          <button class="btn btn-outline-primary mt-4 ml-2" [disabled]="isDisabled" (click)="bid(20)">20-->
-<!--            <i class="fas fa-dollar-sign"></i>-->
-<!--          </button>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-6 ml-auto mr-auto">-->
-<!--      <h2 class="title"> {{product.name}} </h2>-->
-<!--      <h5 class="category">{{product.category}}</h5>-->
-<!--      <h4 class="main-price">Current Bid: <span class="text-danger">{{product.value | currency:'TND'}}</span></h4>-->
-<!--      <h4 class="main-price">Starting Price: <span class="text-info">{{product.startValue | currency:'TND'}}</span></h4>-->
-
-<!--      <div id="accordion" role="tablist" aria-multiselectable="true" class="card-collapse">-->
-<!--        <div class="card card-plain">-->
-<!--          <div class="card-header" role="tab" id="headingOne">-->
-<!--            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"-->
-<!--               aria-controls="collapseOne" class="">-->
-<!--              Description-->
-<!--              <i class="now-ui-icons arrows-1_minimal-down"></i>-->
-<!--            </a>-->
-<!--          </div>-->
-
-<!--          <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" style="">-->
-<!--            <div class="card-body">-->
-<!--              <p>{{product.description}}</p>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="card card-plain">-->
-<!--          <div class="card-header" role="tab" id="headingTwo">-->
-<!--            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"-->
-<!--               aria-expanded="false" aria-controls="collapseTwo">-->
-<!--              Designer Information-->
-
-<!--              <i class="now-ui-icons arrows-1_minimal-down"></i>-->
-<!--            </a>-->
-<!--          </div>-->
-<!--          <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" style="">-->
-<!--            <div class="card-body">-->
-<!--              <p>An infusion of West Coast cool and New York attitude, Rebecca Minkoff is synonymous with It girl style.-->
-<!--                Minkoff burst on the fashion scene with her best-selling 'Morning After Bag' and later expanded her-->
-<!--                offering with the Rebecca Minkoff Collection - a range of luxe city staples with a "downtown romantic"-->
-<!--                theme.</p>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="card card-plain">-->
-<!--          <div class="card-header" role="tab" id="headingThree">-->
-<!--            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"-->
-<!--               aria-expanded="false" aria-controls="collapseThree">-->
-<!--              Details and Care-->
-
-<!--              <i class="now-ui-icons arrows-1_minimal-down"></i>-->
-<!--            </a>-->
-<!--          </div>-->
-<!--          <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" style="">-->
-<!--            <div class="card-body">-->
-<!--              <ul>-->
-<!--                <li>Storm and midnight-blue stretch cotton-blend</li>-->
-<!--                <li>Notch lapels, functioning buttoned cuffs, two front flap pockets, single vent, internal pocket</li>-->
-<!--                <li>Two button fastening</li>-->
-<!--                <li>84% cotton, 14% nylon, 2% elastane</li>-->
-<!--                <li>Dry clean</li>-->
-<!--              </ul>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--=======-->
 <div class="wrapper container mt-5" *ngIf="product">
   <div class="row">
     <div class="col-md-5">
@@ -230,13 +115,9 @@
           </div>
         </div>
       </div>
-      <!--&gt;>>>>>> 0eccd57405b89ab3f6bf975e1b29c6d3a7b0a6b1-->
     </div>
   </div>
 </div>
-<!--  </div>-->
-<!--</div>-->
-
 
 <app-footer></app-footer>
 

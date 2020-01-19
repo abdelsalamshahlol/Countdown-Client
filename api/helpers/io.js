@@ -43,11 +43,11 @@ function init(serverIO) {
       ).populate("participants.user")
         .exec((err, product) => {
           if (err) {
-            serverIO.in(bid.productId).emit('bid:broadcast', {
+            serverIO.sockets.in(bid.productId).emit('bid:broadcast', {
               msg: 'Sorry we encountered an error handling your request',
             });
           } else {
-            serverIO.in(bid.productId).emit('bid:broadcast', {
+            serverIO.sockets.in(bid.productId).emit('bid:broadcast', {
               msg: 'Someone made a bid',
               product
             });
