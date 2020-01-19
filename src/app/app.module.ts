@@ -4,6 +4,8 @@ import {Routes, RouterModule} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { FileSelectDirective } from 'ng2-file-upload';
+
 
 // Helpers
 import {JwtInterceptor} from './helpers/jwt.interceptor';
@@ -68,6 +70,7 @@ declare var $: any;
     AddProductComponent,
     ProductDetailsComponent,
     ContactComponent,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,

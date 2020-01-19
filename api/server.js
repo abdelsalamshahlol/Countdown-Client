@@ -6,6 +6,8 @@ mongoose = require('mongoose'),
 config = require('./db/db');
 require('dotenv').config()
 
+
+
 mongoose.Promise = global.Promise;
 
 const userRoute = require('./routes/user.route');

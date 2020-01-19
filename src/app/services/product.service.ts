@@ -11,7 +11,7 @@ export class ProductService {
   constructor(private http: HttpClient) {
   }
 
-  baseurl: string = "http://localhost:8085/api/product/";
+  baseurl: string = "http://localhost:8085/api/products/";
 
   getAllProducts() {
     return this.http.get<Product[]>(this.baseurl + 'getAll');

@@ -20,6 +20,10 @@ const productSchema = new mongoose.Schema({
     type: Number, 
     default: "0" 
   },
+  startValue: {
+    type: Number,
+    required: true
+  },
   value: Number ,
   initial_date: { 
     type: Date,
