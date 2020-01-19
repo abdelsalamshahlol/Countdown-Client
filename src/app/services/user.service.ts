@@ -14,6 +14,10 @@ export class UserService {
         return this.http.get<User[]>(this.baseurl + 'getAll');
     }
 
+    getUserById(id: string) {
+        return this.http.get<User>(this.baseurl + id);
+    }
+
     addUser(user: User){
         console.log("adding user")
         return this.http.post(this.baseurl + 'signup', user)
