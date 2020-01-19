@@ -59,32 +59,38 @@ export class ProductService {
     return this.http.get<Product[]>(this.baseurl + 'getByUser/' + userId);
   }
 
+  getProductsByUserId(userId: string) {
+    return this.http.get<Product[]>(this.baseurl + 'getByWinner/' + userId);
+  }
+
   populateFakeDatabase() {
     this.userService.getAllUsers().subscribe(users => {
       console.log("Entering populate products")
       let memory="";
-      for (let day = 19; day < 20; day++) {
-          for (let hour =  5; hour < 8; hour++){
-
-          fetch("https://source.unsplash.com/1600x900/?product").then(img => {
-            if (img.url !== memory){
-              this.fakeProduct = {
-                name: faker.commerce.productName(),
-                owner: users[Math.floor(Math.random() * Math.floor(users.length))]._id,
-                description: faker.lorem.sentence(20),
-                category: ["tourism","home","arts","games","appliances","cars","technology","education","sport"][Math.floor(Math.random() * Math.floor(9))],
-                value: parseInt(faker.commerce.price()),
-                end_date: new Date(2020, 0, day, hour, Math.random() * Math.floor(60), Math.random() * Math.floor(60)),
-                main_img: img.url
+      for (let day = 19; day < 22; day++) {
+        for (let hour = 0 ; hour < 24; hour++){
+          for (let i = 0; i < 30; i++) {
+            fetch("https://source.unsplash.com/1600x900/?product").then(img => {
+              if (img.url !== memory){
+                this.fakeProduct = {
+                  name: faker.commerce.productName(),
+                  owner: users[Math.floor(Math.random() * Math.floor(users.length))]._id,
+                  description: faker.lorem.sentence(20),
+                  category: ["tourism","home","arts","games","appliances","cars","technology","education","sport"][Math.floor(Math.random() * Math.floor(9))],
+                  value: parseInt(faker.commerce.price()),
+                  end_date: new Date(2020, 0, day, hour, Math.random() * Math.floor(60), Math.random() * Math.floor(60)),
+                  main_img: img.url
+                }
+                this.addProduct(this.fakeProduct).subscribe( product => {
+                  console.log(product)
+                })
+                memory = img.url
+              }else {
               }
-              this.addProduct(this.fakeProduct).subscribe( product => {
-                console.log(product)
-              })
-              memory = img.url
-            }else {
-            }
-          })
-          console.log("added product")
+            })
+            console.log("added product")
+          }
+
         }
       }
     })
