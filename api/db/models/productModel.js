@@ -11,7 +11,7 @@ const productSchema = new mongoose.Schema({
   },
   description: String,
   images: [],
-  main_image: {
+  main_img: {
     type: String,
     default: "https://gear.nitro.com/content/images/thumbs/default-image_600.png"
   },
