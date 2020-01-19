@@ -7,6 +7,7 @@ import {ProductService} from '../../services/product.service';
 import {UserService} from '../../services/user.service';
 import {AuthenticationService} from '../../services/authentication.service';
 import {Auction} from '../../models/auction';
+import {FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'app-productDetails',
@@ -15,46 +16,35 @@ import {Auction} from '../../models/auction';
 })
 
 export class ProductDetailsComponent implements OnInit, OnDestroy {
-  auction: Auction;
+  // auction: Auction;
   product: Product;
   owner: User;
   productId: string;
   private userToken;
-  isDisabled = false;
-
   participantsList: any;
+  bidForm;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private productService: ProductService,
     private userService: UserService,
     private bidService: BidService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private formBuilder: FormBuilder
   ) {
+    this.bidForm = this.formBuilder.group({
+      amount: 0
+    })
   }
 
   bid(amount) {
-    // console.log('bidding');
     if (amount > this.product.last_auction_price) {
-      // this.auction = {
-      //   last_auction_price: amount,
-      //   userId: this.authenticationService.currentUserValue.userId
-      // }
-
       const userBid = {
         last_auction_price: amount,
         productId: this.productId,
         userToken: this.userToken
       };
-      // console.log(userBid);
-      // this.isDisabled = true;
       this.bidService.bidOnProduct(userBid);
-      // this.productService.updateProduct(this.auction, this.productId).subscribe(newAuction => {
-      //   this.product.last_auction_price = newAuction.product.last_auction_price;
-      //   this.product.participants = newAuction.product.participants;
-      //   this.participantsList = newAuction.product.participants;
-      //   console.log(this.product.participants);
-      // });
     } else {
       // handle the amount lower than our amount
     }
@@ -66,7 +56,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     this.productService.getProductById(this.productId).subscribe(product => {
       this.product = product;
       this.participantsList = product.participants;
-      console.log({product});
+      // console.log({product});
       // console.log(this.participantsList);
 
       this.userService.getUserById(this.product.owner).subscribe(owner => {
@@ -82,14 +72,9 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
       this.userToken = user.token;
     });
 
-
     // Handle broadcasts
     this.bidService.handleBroadCast().subscribe((result) => {
-      // console.log(result.currentValue);
-      console.log({result});
-      // @ts-ignore
-      // this.product.value = result.currentValue;
-      this.isDisabled = false;
+      // console.log({result});
 
       // @ts-ignore
       this.product.last_auction_price = result.product.last_auction_price;
@@ -101,24 +86,14 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
       // Play notification sound
       const alertSound = new Audio('assets/sounds/bid.mp3');
       alertSound.play().catch(err => {
-        console.log('Can\'t play sound');
+        console.error('Can\'t play sound ' + err);
       });
     });
   }
 
-  // bid(value) {
-  // const userBid = {
-  //   value,
-  //   productId: this.productId,
-  //   token: this.userToken
-  // };
-  // // console.log(userBid);
-  // this.isDisabled = true;
-  // this.bidService.bidOnProduct(userBid);
-  // }
-
   ngOnDestroy() {
     // console.log('destroyed');
+    // leave bid on page change
     this.bidService.leaveLiveBid(this.productId);
   }
 }
