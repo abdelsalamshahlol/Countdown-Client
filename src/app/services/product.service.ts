@@ -4,18 +4,20 @@ import {HttpClient} from '@angular/common/http';
 import {Product} from '../models/product';
 import {Auction} from '../models/auction';
 import {User} from '../models/user';
-import * as faker from 'faker'
-import { UserService } from './user.service';
+import * as faker from 'faker';
+import {UserService} from './user.service';
 
 @Injectable({providedIn: 'root'})
 export class ProductService {
   fakeProduct: Product;
+
   constructor(
     private http: HttpClient,
     private userService: UserService
-  ) { }
+  ) {
+  }
 
-  baseurl: string = "http://localhost:8085/api/products/";
+  baseurl = 'http://localhost:8085/api/products/';
 
   getAllProducts() {
     return this.http.get<Product[]>(this.baseurl + 'getAll');
@@ -90,11 +92,10 @@ export class ProductService {
             })
             console.log("added product")
           }
-
         }
       }
-    })
+    });
 
   }
-  
+
 }

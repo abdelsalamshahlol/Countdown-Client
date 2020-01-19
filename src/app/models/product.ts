@@ -9,4 +9,5 @@
     last_auction_price?: number;
     participants?: any;
     winner?: string;
+
 }
