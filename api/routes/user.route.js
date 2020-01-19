@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken')
 let User = require('../db/models/userModel')
 
 userRoutes.route('/signup').post( (req, res) => {
-  let {firstName, email, password} = req.body
+  let {firstName, lastName, email, password} = req.body
   User.find({ email })
   .then(result => {
     if (result.length !== 0) {
@@ -18,6 +18,7 @@ userRoutes.route('/signup').post( (req, res) => {
       bcrypt.hash(password, 10, (err, hashedPassword) => {
         const newUser = new User({
           firstName,
+          lastName,
           email,
           hashedPassword
         });

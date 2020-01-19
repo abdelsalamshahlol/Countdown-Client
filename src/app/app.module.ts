@@ -11,6 +11,7 @@ import {ErrorInterceptor} from './helpers/error.interceptor';
 
 import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
 import {Ng5SliderModule} from 'ng5-slider';
+import { CountdownTimerModule } from 'ngx-countdown-timer';
 
 // Components
 
@@ -78,6 +79,7 @@ declare var $: any;
     OwlNativeDateTimeModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
+    CountdownTimerModule.forRoot(),
     Ng5SliderModule
   ],
   providers: [
