@@ -20,10 +20,18 @@ export class UsersComponent implements OnInit {
     this.getUsers()
   }
 
+  handleClick(user) {
+    // this function receive an id from the form and delete it from the db
+    this._userService.deleteUser(user).subscribe(result => {
+      console.log(result)
+    })
+  }
+
   getUsers() {
     this._userService.getAllUsers().subscribe(data => {
       // Got the data save them inside users array
       this.users = data;
+      console.log(this.users)
     })
   }
 
