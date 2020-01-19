@@ -7,12 +7,11 @@
       CD
     </a>
     <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-      CountDown
+      Profile
     </a>
     <div class="navbar-minimize">
-      <button id="minimizeSidebar" class="btn btn-outline-white btn-icon btn-round">
-        <i class="now-ui-icons text_align-center visible-on-sidebar-regular"></i>
-        <i class="now-ui-icons design_bullet-list-67 visible-on-sidebar-mini"></i>
+      <button id="minimizeSidebar" class="btn btn-outline-white btn-icon btn-round" (click)='logout()'>
+        <i class="fas fa-sign-out-alt"></i>
       </button>
     </div>
   </div>
@@ -24,7 +23,7 @@
       <div class="info" style="display: inline">
         <a>
           <span>
-            James Amos
+            {{ userName }}
             <b ></b>
           </span>
         </a>
@@ -52,13 +51,13 @@
           <ul class="nav">
             <li>
               <a routerLink="product/allproducts">
-                <span class="sidebar-mini-icon">P</span>
+                <span class="sidebar-mini-icon">A</span>
                 <span class="sidebar-normal"> <p>My Products</p> </span>
               </a>
             </li>
             <li>
               <a routerLink="product/wonproducts">
-                <span class="sidebar-mini-icon">P</span>
+                <span class="sidebar-mini-icon">W</span>
                 <span class="sidebar-normal"> <p>Won Products</p> </span>
               </a>
             </li>

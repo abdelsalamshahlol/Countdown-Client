@@ -4,7 +4,7 @@ import {fader} from '../../../helpers/route-animations';
 import { AuthenticationService } from 'src/app/services';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-dashboard',  
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
   encapsulation: ViewEncapsulation.None // Ignore global CSS from styles array and use the one given in component SCSS
@@ -25,6 +25,10 @@ export class DashboardComponent implements OnInit {
 
   public getAdmin() {
     return this.isAdmin
+  }
+
+  getUser() {
+    return this.authenticationService.currentUserValue;
   }
 
   prepareRoute(outlet: RouterOutlet) {

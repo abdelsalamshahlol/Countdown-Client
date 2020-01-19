@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardComponent } from '../../../pages/account/dashboard/dashboard.component'
+import { UserService } from '../../../services/user.service'
 
 @Component({
   selector: 'app-admin-sidebar',
@@ -8,8 +9,10 @@ import { DashboardComponent } from '../../../pages/account/dashboard/dashboard.c
 })
 export class SidebarComponent implements OnInit {
 
+  userName: string = '';
   constructor(
     private _dashboard: DashboardComponent,
+    private _userService: UserService
   ) { }
   
 
@@ -18,8 +21,15 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit() {
-    // console.log(this.isAdmin())
-    // console.log(this._dashboard)
+    let currentUser = this._dashboard.getUser()
+    this._userService.getUserById(currentUser.userId)
+      .subscribe(user => {
+        this.userName = `${user.firstName} ${user.lastName}`
+      })
+  }
+
+  logout() {
+    this._dashboard.logout()
   }
 
 }
