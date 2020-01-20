@@ -38,12 +38,14 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   }
 
   bid(amount) {
+    console.log("bidding")
     if (amount > this.product.last_auction_price) {
       const userBid = {
         last_auction_price: amount,
         productId: this.productId,
         userToken: this.userToken
       };
+      console.log(userBid)
       this.bidService.bidOnProduct(userBid);
     } else {
       // handle the amount lower than our amount
@@ -55,9 +57,6 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     this.productService.getProductById(this.productId).subscribe(product => {
       this.product = product;
       this.participantsList = product.participants;
-      // console.log({product});
-      // console.log(this.participantsList);
-
       this.userService.getUserById(this.product.owner).subscribe(owner => {
         this.owner = owner;
       });
@@ -65,7 +64,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
 
     // Connect to the product bidding
     this.bidService.joinLiveBid(this.productId);
-
+    console.log("here")
     // Get the current user token
     this.authenticationService.currentUser.subscribe(user => {
       this.userToken = user.token;

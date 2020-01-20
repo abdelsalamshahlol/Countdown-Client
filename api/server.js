@@ -5,14 +5,13 @@ cors = require('cors'),
 mongoose = require('mongoose'),
 config = require('./db/db');
 require('dotenv').config();
+http = require('http');
 const nodemailer = require("nodemailer");
 const sendMail = require('./mailer')
+const socketIO = require('./helpers/io');
 
 const multer = require('multer')
-const sharp = require('sharp')
-const storage = require('./upload-config')
-const upload = multer(storage)
-const fs = require('fs')
+
 
 
 mongoose.Promise = global.Promise;
@@ -20,13 +19,17 @@ mongoose.Promise = global.Promise;
 const userRoute = require('./routes/user.route');
 const productRoute = require('./routes/product.route');
 
-mongoose.connect(config.DB, { useNewUrlParser: true , useUnifiedTopology: true})
-.then(
-  () => {console.log(`Database is connected on ${config.DB}`) },
-  err => { console.log('Can not connect to the database'+ err)}
-);
+mongoose.connect(config.DB, {useNewUrlParser: true, useUnifiedTopology: true})
+  .then(
+    () => {
+      console.log('Database is connected')
+    },
+    err => {
+      console.log('Can not connect to the database' + err)
+    }
+  );
 
-mongoose.set("useCreateIndex", true)
+mongoose.set("useCreateIndex", true);
 
 const app = express();
 app.use(bodyParser.json());
@@ -34,11 +37,18 @@ app.use(cors());
 app.use('/api/user', userRoute);
 app.use('/api/products', productRoute);
 
+const httpServer = http.createServer(app);
 const port = process.env.PORT || 8085;
 
-app.listen(port, function() {
+// Socket IO Logic
+let serverIO = socketIO.io(httpServer);
+socketIO.init(serverIO);
+
+httpServer.listen(port, function () {
   console.log(`listening on http://localhost:${port}`);
 });
+
+app.use(express.static(path.join(__dirname, 'uploads')));
 
 app.post("/sendmail", (req, res) => {
   console.log("request came");
@@ -55,21 +65,22 @@ app.post("/sendmail", (req, res) => {
   });
 });
 
-app.post('/upload',upload.single('image') ,async (req, res) => {
-  const { filename: image } = req.file 
-  
-  await sharp(req.file.path)
-  .resize(500)
-  .jpeg({quality: 50})
-  .toFile('newFile.jpg', function(err){
-    if(err){
-      res.send('error');
-      return;
-    }
-    res.send({main_img: req.file.filename});
-  });
-})
-
-app.get("/api/uploads/:name", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "uploads/", req.params.name));
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './uploads/')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  }
 });
+
+var upload = multer({ storage: storage });
+
+app.post("/api/upload", upload.array("uploads[]", 12), function (req, res) {
+  console.log('files', req.files);
+  res.send(req.files);
+});
+
+app.get('/api/uploads/:filename', (req, res) => {
+  res.sendFile(path.resolve("uploads/", req.params.filename))
+})
