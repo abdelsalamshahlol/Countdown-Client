@@ -16,6 +16,10 @@ export class UserService {
     return this.http.get<User[]>(this.baseurl + 'getAll');
   }
 
+  deleteUser(id: string) {
+    return this.http.delete(this.baseurl + 'delete/' + id);
+  }
+
   getUserById(id: string) {
     return this.http.get<User>(this.baseurl + id);
   }

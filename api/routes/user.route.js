@@ -7,7 +7,6 @@ const jwt = require('jsonwebtoken')
 let User = require('../db/models/userModel')
 
 userRoutes.route('/signup').post( (req, res) => {
-  // console.log('ffff', req.body)
   let {firstName, lastName, email, password} = req.body
   User.find({ email })
   .then(result => {
@@ -54,7 +53,6 @@ userRoutes.route('/getAll').get( (req, res) => {
 });
 
 userRoutes.route('/:id').get( (req, res) => {
-  console.log(req.params)
   let id = req.params.id;
   User.findById(id, (err, user) => {
       res.json(user);
@@ -68,12 +66,10 @@ userRoutes.route('/delete/:id').delete(function (req, res) {
 });
 
 userRoutes.route('/login').post( (req, res) => {
-  // console.log('login', req.body)
   const { email, password } = req.body
 
   User.findOne({ email })
   .then(user => {
-    // console.log(user)
     if ( !user ) {
       res.status(301).json({authed: false, msg: 'user doesnt exist'});
     } else {
