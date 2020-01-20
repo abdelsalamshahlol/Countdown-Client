@@ -55,9 +55,6 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     this.productService.getProductById(this.productId).subscribe(product => {
       this.product = product;
       this.participantsList = product.participants;
-      // console.log({product});
-      // console.log(this.participantsList);
-
       this.userService.getUserById(this.product.owner).subscribe(owner => {
         this.owner = owner;
       });
@@ -65,7 +62,6 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
 
     // Connect to the product bidding
     this.bidService.joinLiveBid(this.productId);
-
     // Get the current user token
     this.authenticationService.currentUser.subscribe(user => {
       this.userToken = user.token;

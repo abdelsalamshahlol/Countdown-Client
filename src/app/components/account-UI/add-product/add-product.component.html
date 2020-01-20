@@ -3,33 +3,45 @@
             <h4 class="card-title d-inline-flex">Add Product</h4><i class="now-ui-icons ui-1_simple-add"></i>
         </div>
         <div class="card-body ">
-            <form method="get" action="/" class="form-horizontal">
+            <form [formGroup]="productForm" (ngSubmit)="addProduct()" class="form-horizontal">
                 <div class="row">
-                <label class="col-sm-2 text-left col-form-label">Product Name : </label>
-                <div class="col-sm-10">
-                    <div class="form-group">
-                        <input type="text" class="form-control">
+                    <label class="col-sm-2 text-left col-form-label">Product Name : </label>
+                    <div class="col-sm-10">
+                        <div class="form-group">
+                            <input type="text" class="form-control" formControlName="name">
+                        </div>
                     </div>
                 </div>
-                </div>
                 <div class="row">
-                <label class="col-sm-2 text-left col-form-label">Starting Price :</label>
-                <div class="col-sm-10">
-                    <div class="form-group">
-                        <input type="text" class="form-control">
+                    <label class="col-sm-2 text-left col-form-label">Product Description : </label>
+                    <div class="col-sm-10">
+                        <div class="form-group">
+                            <textarea type="textarea" class="form-control" rows="3" formControlName="description"></textarea>
+                        </div>
                     </div>
                 </div>
+                <div class="row">
+                    <label class="col-sm-2 text-left col-form-label">Product Value :</label>
+                    <div class="col-sm-10">
+                        <div class="form-group">
+                            <input type="number" class="form-control" formControlName="value">
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <label class="col-sm-2 text-left col-form-label">Category</label>
                         <div class="col-sm-10">
                             <div class="form-group">
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                            <select class="form-control" id="exampleFormControlSelect1" formControlName="category">
+                                <option value="tourism">Tourism</option>
+                                <option value="home">Home</option>
+                                <option value="arts">Arts</option>
+                                <option value="games">Games</option>
+                                <option value="appliances">Appliances</option>
+                                <option value="cars">Cars</option>
+                                <option value="technology">Technology</option>
+                                <option value="education">Education</option>
+                                <option value="sport">Sport</option>
                             </select>
                         </div>
                     </div>
@@ -37,21 +49,31 @@
                 
                 <div>
                     <div class='row'>
-                        <label class="col-sm-2 text-left col-form-label">Date & Time</label>
+                        <label class="col-sm-2 text-left col-form-label">End Date & Time</label>
                         <div class="col-sm-10">
                             <div class="form-group">
-                                <input class="form-control" [owlDateTimeTrigger]="dt" [owlDateTime]="dt">
+                                <input class="form-control" [owlDateTimeTrigger]="dt" [owlDateTime]="dt" formControlName="end_date">
                                 <owl-date-time #dt></owl-date-time>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- <div class="row">
+                    <label class="col-sm-2 text-left col-form-label">Image URL</label>
+                    <div class="col-sm-10">
+                        <div class="form-group">
+                            <input type="text" class="form-control" formControlName="main_img">
+                        </div>
+                    </div>    
+                </div> -->
                 <div class="row">
                     <label class="col-sm-2 text-left col-form-label">Upload Image </label>
                     <div class="col-sm-10">
                         <div class="custom-file">
-                            <input name="file[]" [placeholder]="files" multiple (change)="getFileName($event)" type="file" class="custom-file-input form-control" required>
-                            <label class="custom-file-label" for="validatedCustomFile">{{ files }}</label>
+
+                            <input formControlName="main_img" name="file" [placeholder]="fileName" (change)="fileChangeEvent($event)" type="file" class="custom-file-input form-control" id="validatedCustomFile" multiple>
+                            <label class="custom-file-label" for="validatedCustomFile">{{ fileName }}</label>
+
                             <div class="invalid-feedback">Example invalid custom file feedback</div>
                         </div>
                     </div>    

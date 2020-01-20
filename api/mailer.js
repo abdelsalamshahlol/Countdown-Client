@@ -1,8 +1,6 @@
 const nodemailer = require("nodemailer");
 
 module.exports = (data, callback) => {
-  console.log(data.username);
-  console.log(data.email);
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 587,
@@ -146,7 +144,7 @@ module.exports = (data, callback) => {
                                            </font>
                                            <div style="height: 1px; line-height: 1px; font-size: 1px;">&nbsp;</div>
                                            <font face="'Source Sans Pro', sans-serif" color="#7f7f7f" style="font-size: 19px; line-height: 23px;">
-                                              <span style="font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #7f7f7f; font-size: 19px; line-height: 23px;">CDevelopers at CountDown - RBK Tunisia</span>
+                                              <span style="font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #7f7f7f; font-size: 19px; line-height: 23px;">Developers at CountDown - RBK Tunisia</span>
                                            </font>
                                         </td>
                                         <td width="18" style="width: 18px; max-width: 18px; min-width: 18px;">&nbsp;</td>

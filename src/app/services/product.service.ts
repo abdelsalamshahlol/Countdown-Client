@@ -23,6 +23,10 @@ export class ProductService {
     return this.http.get<Product[]>(this.baseurl + 'getAll');
   }
 
+  getAllProductsAdmin() {
+    return this.http.get<Product[]>(this.baseurl + 'getAllAdmin');
+  }
+
   getProductById(id: string) {
     return this.http.get<Product>(this.baseurl + id);
   }
@@ -60,6 +64,7 @@ export class ProductService {
   getProductsByUserId(userId: string) {
     return this.http.get<Product[]>(this.baseurl + 'getByUser/' + userId);
   }
+
 
   getProductsByWinner(userId: string) {
     return this.http.get<Product[]>(this.baseurl + 'getByWinner/' + userId);
