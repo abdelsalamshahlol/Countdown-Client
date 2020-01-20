@@ -42,13 +42,13 @@
           </a>
         </li> -->
 <!-- end of temporary button -->
-        <li class="nav-item" *ngIf="!isLoggedIn">
-          <a class="nav-link" href="/login">
+        <li  class="nav-item" *ngIf="!isLoggedIn">
+          <a class="nav-link" routerLink="/login">
             Login
           </a>
         </li>
-        <li class="nav-item" *ngIf="!isLoggedIn">
-          <a class="nav-link" href="/signup">
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }" class="nav-item" *ngIf="!isLoggedIn">
+          <a class="nav-link" routerLink="/signup">
             Signup
           </a>
         </li>
@@ -58,7 +58,7 @@
           </a>
         </li>
         <li class="nav-item" *ngIf="isLoggedIn">
-          <a class="nav-link" href="/account">
+          <a class="nav-link" routerLink="/account">
             <i style="color: red; font-size: 14pt;" class="now-ui-icons users_single-02"></i>
           </a>
         </li>

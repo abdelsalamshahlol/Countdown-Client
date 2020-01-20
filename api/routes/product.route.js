@@ -21,6 +21,13 @@ productRoutes.route('/getAll').get( (req, res) => {
   });
 });
 
+productRoutes.route('/getAllAdmin').get( (req, res) => {
+  Product.find({}, (err, products) => {
+    (err) ? console.log(err) : res.json(products)
+  });
+});
+
+
 productRoutes.route('/:id').get( (req, res) => {
   let id = req.params.id;
   Product.findById(id)
