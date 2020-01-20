@@ -7,7 +7,7 @@ import {ProductService} from '../../services/product.service';
 import {UserService} from '../../services/user.service';
 import {AuthenticationService} from '../../services/authentication.service';
 import {Auction} from '../../models/auction';
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, Validators, FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-productDetails',
@@ -23,6 +23,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   private userToken;
   participantsList: any;
   bidForm;
+  submitted: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -33,11 +34,12 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder
   ) {
     this.bidForm = this.formBuilder.group({
-      amount: 0
+        amount:['', [Validators.required, Validators.minLength(1)]],
     })
   }
 
   bid(amount) {
+    this.submitted = true;
     if (amount > this.product.last_auction_price) {
       const userBid = {
         last_auction_price: amount,
@@ -84,6 +86,10 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
         console.error('Can\'t play sound ' + err);
       });
     });
+  }
+
+  get f() {
+    return this.bidForm.controls;
   }
 
   ngOnDestroy() {

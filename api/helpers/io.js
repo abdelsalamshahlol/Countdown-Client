@@ -19,7 +19,7 @@ function init(serverIO) {
       try {
         userId = jwt.decode(bid.userToken, process.env.TOKEN_SECRET)._id;
       } catch (err) {
-        console.log('Invalid jwt');
+        console.error('Invalid jwt');
         return;
       }
       productModel.findByIdAndUpdate(

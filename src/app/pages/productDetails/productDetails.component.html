@@ -96,14 +96,16 @@
                   <div class="col-sm-9">
                     <div class="form-group" style="margin-bottom: 0px">
                       <input type="number" class="form-control" min="0" step="50" formControlName="amount"
-                             placeholder="Amount"/>
+                             placeholder="Amount" [ngClass]="{'is-invalid':submitted && f.amount.invalid}"/>
                     </div>
                   </div>
                   <div class="col-sm-3">
                     <button type="submit" class="my-3 btn btn-primary">Fast Bid!</button>
                   </div>
+                  <div class="col">
+                    <small class="text-danger" style="font-size: 14px;" *ngIf="submitted && f.amount.invalid">Invalid amount.</small>
+                  </div>
                 </div>
-
               </form>
             </div>
           </div>
@@ -129,7 +131,9 @@
               <tr *ngFor="let participant of participantsList">
                 <td>{{participant.user.firstName}} {{participant.user.lastName}}</td>
                 <td>{{participant.price}} TND</td>
-                <td>{{participant.date}}</td>
+                <td>
+                  <h5 class="m-0 p-0"><span class="badge badge-primary">{{participant.date | date:'medium'}}</span></h5>
+                </td>
               </tr>
               </tbody>
             </table>
@@ -141,4 +145,3 @@
 </div>
 
 <app-footer></app-footer>
-
