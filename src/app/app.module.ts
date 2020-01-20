@@ -31,6 +31,11 @@ import {AddProductComponent} from './components/account-UI/add-product/add-produ
 import {ProductDetailsComponent} from './pages/productDetails/productDetails.component';
 import {ContactComponent} from './pages/contact/contact.component';
 
+import {AuthGuard} from './helpers/auth.guard';
+import { UsersComponent } from './pages/account/users/users.component';
+import { UserproductsComponent } from './pages/userproducts/userproducts.component';
+import { WonproductsComponent } from './pages/wonproducts/wonproducts.component';
+
 // Routes array
 const routes: Routes = [
   {path: '', component: IndexComponent},
@@ -39,7 +44,14 @@ const routes: Routes = [
     path: 'account', component: DashboardComponent,
     children: [
       {path: '', component: HomeComponent},
-      {path: 'product', component: ProductUserComponent}
+      {path: 'product', 
+        children: [
+          {path: '', component: ProductUserComponent},
+          {path: 'allproducts', component: UserproductsComponent},
+          {path: 'wonproducts', component: WonproductsComponent},
+        ]
+      },
+      {path: 'users', component: UsersComponent}
     ], canActivate: [AuthGuard]
   },
   {path: 'signup', component: SignupComponent},
@@ -69,6 +81,9 @@ const config: SocketIoConfig = {url: 'http://localhost:8085', options: {}};
     AddProductComponent,
     ProductDetailsComponent,
     ContactComponent,
+    UsersComponent,
+    UserproductsComponent,
+    WonproductsComponent
   ],
   imports: [
     BrowserModule,

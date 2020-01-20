@@ -1,4 +1,7 @@
 const express = require('express'),
+
+nodemailer = require('nodemailer');
+sendMail = require('./mailer')
 path = require('path'),
 bodyParser = require('body-parser'),
 cors = require('cors'),
@@ -6,11 +9,11 @@ mongoose = require('mongoose'),
 config = require('./db/db');
 require('dotenv').config();
 http = require('http');
-const nodemailer = require("nodemailer");
-const sendMail = require('./mailer')
 const socketIO = require('./helpers/io');
 
 const multer = require('multer')
+
+
 
 
 

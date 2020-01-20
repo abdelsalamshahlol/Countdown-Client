@@ -32,7 +32,7 @@ export class ProductService {
   }
 
   deleteProduct(id: string) {
-    return this.http.get(this.baseurl + 'delete/' + id);
+    return this.http.delete(this.baseurl + 'delete/' + id);
   }
 
   updateProduct(auction: Auction, id: string) {
@@ -61,7 +61,8 @@ export class ProductService {
     return this.http.get<Product[]>(this.baseurl + 'getByUser/' + userId);
   }
 
-  getProductsByWinnerId(userId: string) {
+
+  getProductsByWinner(userId: string) {
     return this.http.get<Product[]>(this.baseurl + 'getByWinner/' + userId);
   }
 

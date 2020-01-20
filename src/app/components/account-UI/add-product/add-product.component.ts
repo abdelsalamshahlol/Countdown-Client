@@ -10,6 +10,7 @@ import { Product } from '../../../models/product'
   styleUrls: ['./add-product.component.scss']
 })
 export class AddProductComponent implements OnInit {
+
   product: Product;
   name: string;
   owner: string;
@@ -28,6 +29,10 @@ export class AddProductComponent implements OnInit {
     private productService: ProductService
   ) { }
 
+
+  files: string = '';
+
+
   ngOnInit() {
     this.myForm = this.fb.group({chosenfiles: this.fb.array([])});
     this.productForm = this.fb.group({
@@ -39,6 +44,7 @@ export class AddProductComponent implements OnInit {
       main_img: ''
     })
   }
+
 
   addProduct() {
     const formData: any = new FormData();

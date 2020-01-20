@@ -35,7 +35,7 @@ productRoutes.route('/:id').get( (req, res) => {
 
 });
 
-productRoutes.route('/delete/:id').get( (req, res) => {
+productRoutes.route('/delete/:id').delete( (req, res) => {
   Product.findByIdAndRemove({_id: req.params.id}, function(err, product){
       (err) ? res.json(err) : res.json({"msg": 'Successfully removed'});
   });

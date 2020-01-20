@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken')
 let User = require('../db/models/userModel')
 
 userRoutes.route('/signup').post( (req, res) => {
+  // console.log('ffff', req.body)
   let {firstName, lastName, email, password} = req.body
   User.find({ email })
   .then(result => {
@@ -53,25 +54,26 @@ userRoutes.route('/getAll').get( (req, res) => {
 });
 
 userRoutes.route('/:id').get( (req, res) => {
+  console.log(req.params)
   let id = req.params.id;
   User.findById(id, (err, user) => {
       res.json(user);
   });
 });
 
-userRoutes.route('/delete/:id').get(function (req, res) {
+userRoutes.route('/delete/:id').delete(function (req, res) {
   User.findByIdAndRemove({_id: req.params.id}, function(err, user){
       (err) ? res.json(err) : res.json({"msg": 'Successfully removed'});
   });
 });
 
 userRoutes.route('/login').post( (req, res) => {
-  console.log(req.body)
+  // console.log('login', req.body)
   const { email, password } = req.body
 
   User.findOne({ email })
   .then(user => {
-    console.log(user)
+    // console.log(user)
     if ( !user ) {
       res.status(301).json({authed: false, msg: 'user doesnt exist'});
     } else {
@@ -88,7 +90,7 @@ userRoutes.route('/login').post( (req, res) => {
             { expiresIn: 3600 }
             )
           res.header('auth-token',token) //saving the token in the header !!
-          res.status(200).json({ authed: true, msg: "correct password !", token, userId: user._id})
+          res.status(200).json({ authed: true, msg: "correct password !", token, userId: user._id, isAdmin: user.isAdmin})
           //redirect user
         }
       })
