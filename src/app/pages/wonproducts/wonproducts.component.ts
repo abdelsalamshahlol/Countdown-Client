@@ -25,4 +25,13 @@ export class WonproductsComponent implements OnInit {
       })
   }
 
+  handleDelete(_id: string) {
+    this._productService.deleteProduct(_id)
+      .subscribe(result => {
+        // product deleted 
+        // this._router.navigate(['/product'])
+        location.reload()
+      })
+  }
+
 }

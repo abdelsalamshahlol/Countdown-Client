@@ -27,4 +27,13 @@ export class UserproductsComponent implements OnInit {
     // console.log(this.authenticationService.currentUserValue)
   }
 
+  handleDelete(_id: string) {
+    this._productService.deleteProduct(_id)
+      .subscribe(result => {
+        // product deleted 
+        // this._router.navigate(['/product'])
+        location.reload()
+      })
+  }
+
 }

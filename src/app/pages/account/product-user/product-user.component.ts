@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { ProductService } from '../../../services/product.service'
 import { UserService } from '../../../services/user.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-user',
@@ -16,7 +17,8 @@ export class ProductUserComponent implements OnInit {
   constructor(
     private _dashboard: DashboardComponent,
     private _productService: ProductService,
-    private _userService: UserService
+    private _userService: UserService,
+    private _router: Router
   ) { }
 
   ngOnInit() {
@@ -41,6 +43,8 @@ export class ProductUserComponent implements OnInit {
     this._productService.deleteProduct(_id)
       .subscribe(result => {
         // product deleted 
+        // this._router.navigate(['/product'])
+        location.reload()
       })
   }
 
