@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-product',
@@ -7,11 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddProductComponent implements OnInit {
 
-  fileName: string = '';
-  constructor() { }
+  fileName: ""
+  productForm: FormGroup;
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient
+  ) { }
 
   ngOnInit() {
-    
+    this.productForm = this.formBuilder.group({
+      name: '',
+      description: '',
+      category: 'tourism',
+      value: 0,
+      end_date: new Date(),
+      main_img: ''
+    })
+  }
+
+  addProduct(){
+    this.http.post('http://localhost:8085/upload', this.productForm.value.main_img)
+    console.log(this.productForm.value)
   }
 
   getFileName(event) {
@@ -19,7 +37,7 @@ export class AddProductComponent implements OnInit {
       this.fileName = event.target.files[0].name
 
     }
-    console.log(event.target.files)
+    console.log(event.target.files[0])
   }
 
 
