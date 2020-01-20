@@ -10,7 +10,6 @@ import {SocketIoModule, SocketIoConfig} from 'ngx-socket-io';
 import {JwtInterceptor} from './helpers/jwt.interceptor';
 import {ErrorInterceptor} from './helpers/error.interceptor';
 import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
-import {AuthGuard} from './helpers/auth.guard';
 import {Ng5SliderModule} from 'ng5-slider';
 import {CountdownTimerModule} from 'ngx-countdown-timer';
 
