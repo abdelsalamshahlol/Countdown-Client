@@ -1,5 +1,5 @@
 ﻿export class User {
-  [x: string]: boolean;
+  [x: string]: boolean; // CHECK THIS ABDESSALAM
     _id?: string;
     email: string;
     password: string;
@@ -7,4 +7,5 @@
     lastName: string;
     token?: string;
     userId?:string;
+    isAdmin?: boolean;
 }

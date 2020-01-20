@@ -71,7 +71,7 @@ export class AddProductComponent implements OnInit {
           end_date: this.end_date,
           main_img: this.main_img
         }).subscribe((data) => {
-          console.log(data)
+          console.log("product added")
         })
       });
   }
