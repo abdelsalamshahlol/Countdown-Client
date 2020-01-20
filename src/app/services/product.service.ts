@@ -61,6 +61,7 @@ export class ProductService {
     return this.http.get<Product[]>(this.baseurl + 'getByUser/' + userId);
   }
 
+
   getProductsByWinner(userId: string) {
     return this.http.get<Product[]>(this.baseurl + 'getByWinner/' + userId);
   }
