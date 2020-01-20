@@ -30,7 +30,7 @@
       </div>
     </div>
     <ul class="nav">
-      <li class="active">
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
         <a routerLink="/account/">
           <i class="fas fa-home"></i>
           <p>Dashboard</p>
@@ -40,7 +40,7 @@
 
       
       <!--      Commented for future use IF not delete @Abdelsalam-->
-      <li *ngIf="!isAdmin()">
+      <li *ngIf="!isAdmin()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
         <a data-toggle="collapse" href="#pagesExamples">
           <i class="fas fa-box-open"></i>
           <p>
@@ -49,13 +49,13 @@
         </a>
         <div class="collapse " id="pagesExamples">
           <ul class="nav">
-            <li>
+            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
               <a routerLink="product/allproducts">
                 <span class="sidebar-mini-icon">A</span>
                 <span class="sidebar-normal"> <p>My Products</p> </span>
               </a>
             </li>
-            <li>
+            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
               <a routerLink="product/wonproducts">
                 <span class="sidebar-mini-icon">W</span>
                 <span class="sidebar-normal"> <p>Won Products</p> </span>
@@ -65,7 +65,7 @@
         </div>
       </li>
 
-      <li *ngIf="isAdmin()">
+      <li *ngIf="isAdmin()"  [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
         <a data-toggle="collapse" routerLink='/account/product'>
           <i class="fas fa-box-open"></i>
           <p>
@@ -74,7 +74,7 @@
         </a>
       </li>
 
-      <li *ngIf="isAdmin()">
+      <li *ngIf="isAdmin()"  [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
         <a data-toggle="collapse" routerLink="/account/users">
           <i  class="fas fa-user"></i>
           <p>
